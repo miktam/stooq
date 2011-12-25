@@ -19,6 +19,8 @@ import java.util.zip.ZipFile;
 
 import org.apache.log4j.Logger;
 
+import com.data.parser.FileParser;
+
 public class DataDownloaderImpl implements DataDownloader {
 
 	private final Logger logger = Logger.getLogger(DataDownloaderImpl.class);
@@ -47,6 +49,9 @@ public class DataDownloaderImpl implements DataDownloader {
 
 		List<String> extractedFiles = unzipFile(filename);
 		now = f("extracted files", now);
+		
+		FileParser.parseFiles(extractedFiles);
+		now = f("created tickers", now);
 
 		logger.info("got extracted files: " + extractedFiles);
 
