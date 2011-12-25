@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -26,7 +27,8 @@ public class DataDownloaderImpl implements DataDownloader {
 
 	private final String dataDirectory = "C:\\DEV\\stooq\\data\\";
 	private final String filenameStoredLocally = dataDirectory + "stooq.zip";
-	private final String extractedFilesDirectory = dataDirectory + "EXTRACTED\\";
+	private final String extractedFilesDirectory = dataDirectory
+			+ "EXTRACTED\\";
 
 	private String contentType;
 	private int contentLength;
@@ -42,7 +44,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 		String filename = writeUrlLocally(urlConnection);
 		now = f("wrote file locally", now);
-		
+
 		List<String> extractedFiles = unzipFile(filename);
 		now = f("extracted files", now);
 
@@ -115,27 +117,43 @@ public class DataDownloaderImpl implements DataDownloader {
 			ZipEntry entry;
 			ZipFile zipfile = new ZipFile(path);
 			Enumeration e = zipfile.entries();
-			while (e.hasMoreElements()) {
-				entry = (ZipEntry) e.nextElement();
-				is = new BufferedInputStream(zipfile.getInputStream(entry));
-				int count;
-				byte data[] = new byte[BUFFER];
-				String filePath = entry.getName();				
-				logger.trace("extract file: " + filePath);
-				extractedFiles.add(extractedFilesDirectory + filePath);
-				FileOutputStream fos = new FileOutputStream(extractedFilesDirectory + filePath);
-				dest = new BufferedOutputStream(fos, BUFFER);
-				while ((count = is.read(data, 0, BUFFER)) != -1) {
-					dest.write(data, 0, count);
-				}
-				dest.flush();
-				dest.close();
-				is.close();
 
+			int howManyEntriesInZip = zipfile.size();
+			logger.info("files in zip: " + howManyEntriesInZip);
+			File directoryWhereFilesWillBeCreated = new File(
+					extractedFilesDirectory);
+			int alreadyInDir = directoryWhereFilesWillBeCreated.list().length;
+			if (alreadyInDir == howManyEntriesInZip) {
+				logger.info("CACHE unzipping!: already " + howManyEntriesInZip
+						+ " files in directory");
+				List<File> filesCached = Arrays.asList(directoryWhereFilesWillBeCreated.listFiles());
+				for (File f:filesCached)
+					extractedFiles.add(f.getAbsolutePath());				
+			} else {
+
+				while (e.hasMoreElements()) {
+					entry = (ZipEntry) e.nextElement();
+					is = new BufferedInputStream(zipfile.getInputStream(entry));
+					int count;
+					byte data[] = new byte[BUFFER];
+					String filePath = entry.getName();
+					logger.trace("extract file: " + filePath);
+					extractedFiles.add(extractedFilesDirectory + filePath);
+					FileOutputStream fos = new FileOutputStream(
+							extractedFilesDirectory + filePath);
+					dest = new BufferedOutputStream(fos, BUFFER);
+					while ((count = is.read(data, 0, BUFFER)) != -1) {
+						dest.write(data, 0, count);
+					}
+					dest.flush();
+					dest.close();
+					is.close();
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return extractedFiles;
 
 	}
