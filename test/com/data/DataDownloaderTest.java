@@ -1,16 +1,20 @@
 package com.data;
 
+import static com.data.TickerManager.getTickerFor;
+
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.hamcrest.core.IsEqual;
+import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.data.ticker.Ticker;
+import sun.security.action.GetLongAction;
 
-import static org.hamcrest.CoreMatchers.*;
+import com.data.ticker.EntryDayTicker;
+import com.data.ticker.Ticker;
 
 public class DataDownloaderTest {
 	
@@ -34,10 +38,15 @@ public class DataDownloaderTest {
 		List<Ticker> tickers = dd.downloadData();
 		//assertThat(tickers.size(), equalTo(notNullValue()));
 		
-		logger.debug(tickers);
+		String wig = "WIG20";
+		String kghm = "KGHM";		
 		
+		Ticker t = getTickerFor(wig);
+		logger.info("first Entry for " + kghm + " = "+ getTickerFor(kghm).first());
 		
+		logger.info("last Entry for " + kghm + " = "+ TickerManager.ins().getLast(kghm, 2));
 		
+		Ticker kghmTicker = getTickerFor(kghm);		
 	}
 
 }

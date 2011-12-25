@@ -53,7 +53,10 @@ public class DataDownloaderImpl implements DataDownloader {
 		
 		List<Ticker> tickers = FileParser.parseFiles(extractedFiles);
 		now = f("created tickers", now);
-
+		
+		TickerManager.ins().loadTickers(tickers);
+		now = f("load ticker manager", now);
+		
 		return tickers;
 	}
 

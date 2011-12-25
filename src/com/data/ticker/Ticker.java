@@ -2,8 +2,9 @@ package com.data.ticker;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,17 +19,34 @@ public class Ticker {
 				+ ", map size=" + map.size() + "]";
 	}
 
-
-
 	private static Logger logger = Logger.getLogger(Ticker.class);
 
 	public final String ticker;
+
+	private EntryDayTicker firstTransaction;
+	private EntryDayTicker lastTransaction;
+
 	private String firstLine;
+	private Map<DateTime, EntryDayTicker> map = new LinkedHashMap<DateTime, EntryDayTicker>();
+	private List<EntryDayTicker> list = new LinkedList<EntryDayTicker>();
 
-	private Map<DateTime, Entry> map = new HashMap<DateTime, Entry>();
-
-	public Map<DateTime, Entry> getMap() {
+	// GETTERS
+	public Map<DateTime, EntryDayTicker> getMap() {
 		return map;
+	}
+	
+	public List<EntryDayTicker> getList()
+	{
+		return list;
+	}
+
+	/**
+	 * get first transaction (oldest one)
+	 * 
+	 * @return
+	 */
+	public EntryDayTicker first() {
+		return firstTransaction;
 	}
 
 	/**
@@ -47,54 +65,28 @@ public class Ticker {
 			s = new Scanner(new File(absolutePath));
 			firstLine = s.nextLine();
 			logger.trace("first line: " + firstLine);
-			// List<Entry> listOFEntries = new ArrayList<Entry>();
+
+			String firstline = s.nextLine();
+			logger.trace("handle first transaction line - first in the history entry"
+					+ firstline);
+			EntryDayTicker firstEntry = new EntryDayTicker(firstline);
+			this.firstTransaction = firstEntry;
+			map.put(firstEntry.date, firstEntry);
+			list.add(firstEntry);
 
 			while (s.hasNextLine()) {
 				String line = s.nextLine();
-				Entry e = new Entry(line);
+				logger.trace(line);
+				EntryDayTicker e = new EntryDayTicker(line);
 				map.put(e.date, e);
 
+				list.add(e);
 			}
 
 		} catch (FileNotFoundException e) {
 			logger.error("file not found!!!" + e);
 			e.printStackTrace();
 		}
-	}
-	
-	
-
-	private class Entry {
-		@Override
-		public String toString() {
-			return "Entry [name=" + name + ", date=" + date + ", open=" + open
-					+ ", high=" + high + ", low=" + low + ", close=" + close
-					+ ", vol=" + vol + "]";
-		}
-
-		public final String name;
-		public final DateTime date;
-		public final float open;
-		public final float high;
-		public final float low;
-		public final float close;
-		public final float vol;
-
-		public Entry(String entry) {
-			super();
-			String[] current = entry.split(",");
-
-			logger.trace(Arrays.asList(current));
-
-			this.name = current[0];
-			this.date = new DateTime(current[1]);
-			this.open = Float.parseFloat(current[2]);
-			this.high = Float.parseFloat(current[2]);
-			this.low = Float.parseFloat(current[2]);
-			this.close = Float.parseFloat(current[2]);
-			this.vol = Float.parseFloat(current[6]);
-		}
-
 	}
 
 }
