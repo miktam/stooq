@@ -1,7 +1,11 @@
 package com.data;
 
+import java.util.List;
+
+import com.data.ticker.Ticker;
+
 public interface DataDownloader {
 
-	boolean downloadData() throws Exception;
+	List<Ticker> downloadData() throws Exception;
 	
 }

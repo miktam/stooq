@@ -20,6 +20,7 @@ import java.util.zip.ZipFile;
 import org.apache.log4j.Logger;
 
 import com.data.parser.FileParser;
+import com.data.ticker.Ticker;
 
 public class DataDownloaderImpl implements DataDownloader {
 
@@ -37,7 +38,7 @@ public class DataDownloaderImpl implements DataDownloader {
 	private long now;
 
 	@Override
-	public boolean downloadData() throws Exception {
+	public List<Ticker> downloadData() throws Exception {
 		logger.debug("start download");
 
 		now = s();
@@ -50,12 +51,10 @@ public class DataDownloaderImpl implements DataDownloader {
 		List<String> extractedFiles = unzipFile(filename);
 		now = f("extracted files", now);
 		
-		FileParser.parseFiles(extractedFiles);
+		List<Ticker> tickers = FileParser.parseFiles(extractedFiles);
 		now = f("created tickers", now);
 
-		logger.info("got extracted files: " + extractedFiles);
-
-		return false;
+		return tickers;
 	}
 
 	private String writeUrlLocally(URLConnection urlConnection)

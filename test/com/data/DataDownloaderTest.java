@@ -1,13 +1,16 @@
 package com.data;
 
-import static org.junit.Assert.*;
-
+import java.util.List;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.IsEqual;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.data.ticker.Ticker;
+
+import static org.hamcrest.CoreMatchers.*;
 
 public class DataDownloaderTest {
 	
@@ -28,7 +31,12 @@ public class DataDownloaderTest {
 	public void test() throws Exception {
 		
 		
-		assertThat(dd.downloadData(), CoreMatchers.is(false));
+		List<Ticker> tickers = dd.downloadData();
+		//assertThat(tickers.size(), equalTo(notNullValue()));
+		
+		logger.debug(tickers);
+		
+		
 		
 	}
 
