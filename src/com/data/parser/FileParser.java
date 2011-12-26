@@ -25,7 +25,7 @@ public class FileParser {
 			tickers.add(t);
 		}
 		
-		logger.info("created list of tickers #: " + tickers.size());	
+		logger.trace("created list of tickers #: " + tickers.size());	
 		
 		return tickers;
 	}

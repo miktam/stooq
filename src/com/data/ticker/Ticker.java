@@ -24,7 +24,6 @@ public class Ticker {
 	public final String ticker;
 
 	private EntryDayTicker firstTransaction;
-	private EntryDayTicker lastTransaction;
 
 	private String firstLine;
 	private Map<DateTime, EntryDayTicker> map = new LinkedHashMap<DateTime, EntryDayTicker>();

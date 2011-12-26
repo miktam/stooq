@@ -1,19 +1,15 @@
 package com.data;
 
-import static com.data.TickerManager.getTickerFor;
-
 import java.util.List;
-import java.util.Map.Entry;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import sun.security.action.GetLongAction;
-
-import com.data.ticker.EntryDayTicker;
 import com.data.ticker.Ticker;
 
 public class DataDownloaderTest {
@@ -30,6 +26,14 @@ public class DataDownloaderTest {
 		dd = new DataDownloaderImpl();
 		logger.info("instantiated dd: " + dd);
 	}
+	
+	@Test
+	public void createDate()
+	{
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd");
+		DateTime dateTime = formatter.parseDateTime("20111230");
+		logger.info(dateTime);
+	}
 
 	@Test
 	public void test() throws Exception {
@@ -40,13 +44,12 @@ public class DataDownloaderTest {
 		
 		String wig = "WIG20";
 		String kghm = "KGHM";		
+		String MAGNA = "06MAGNA";		
 		
-		Ticker t = getTickerFor(wig);
-		logger.info("first Entry for " + kghm + " = "+ getTickerFor(kghm).first());
+		logger.info("last 3 Entry for " + MAGNA + " = "+ TickerManager.ins().getLast(MAGNA, 3));		
+		logger.info("last 3 Entry for " + wig + " = "+ TickerManager.ins().getLast(wig, 3));		
+		logger.info("last 2 Entry for " + kghm + " = "+ TickerManager.ins().getLast(kghm, 2));
 		
-		logger.info("last Entry for " + kghm + " = "+ TickerManager.ins().getLast(kghm, 2));
-		
-		Ticker kghmTicker = getTickerFor(kghm);		
 	}
 
 }
