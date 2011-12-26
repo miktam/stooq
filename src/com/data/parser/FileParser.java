@@ -15,7 +15,7 @@ public class FileParser {
 	
 	public static List<Ticker> parseFiles(List<String> absolutePaths)
 	{
-		logger.debug("start parsing files: " + absolutePaths);
+		logger.trace("start parsing files: " + absolutePaths);
 		
 		// <TICKER>,<DTYYYYMMDD>,<OPEN>,<HIGH>,<LOW>,<CLOSE>,<VOL>,
 		//ACTION,20060724,13.90,13.90,11.60,11.80,1211035

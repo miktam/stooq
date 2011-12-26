@@ -1,5 +1,6 @@
 package com.data;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.BasicConfigurator;
@@ -8,9 +9,11 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.data.ticker.Ticker;
+import com.tools.Tool;
 
 public class DataDownloaderTest {
 	
@@ -24,9 +27,9 @@ public class DataDownloaderTest {
 	{
 		BasicConfigurator.configure();
 		dd = new DataDownloaderImpl();
-		logger.info("instantiated dd: " + dd);
 	}
 	
+	@Ignore
 	@Test
 	public void createDate()
 	{
@@ -35,20 +38,47 @@ public class DataDownloaderTest {
 		logger.info(dateTime);
 	}
 
+	
 	@Test
-	public void test() throws Exception {
+	public void getClosedPriceForTickers() throws Exception {		
+		
+		dd.downloadData();
+		String kghm = "KGHM";				
+		TickerManager.ins();	
+		Tool.pa(TickerManager.getCloseFor(kghm, 10));
+	}
+	
+	@Test
+	@Ignore
+	public void getLastTickers() throws Exception {
 		
 		
 		List<Ticker> tickers = dd.downloadData();
-		//assertThat(tickers.size(), equalTo(notNullValue()));
-		
 		String wig = "WIG20";
 		String kghm = "KGHM";		
 		String MAGNA = "06MAGNA";		
 		
-		logger.info("last 3 Entry for " + MAGNA + " = "+ TickerManager.ins().getLast(MAGNA, 3));		
-		logger.info("last 3 Entry for " + wig + " = "+ TickerManager.ins().getLast(wig, 3));		
-		logger.info("last 2 Entry for " + kghm + " = "+ TickerManager.ins().getLast(kghm, 2));
+		TickerManager.ins();
+		logger.info("last 3 Entry for " + MAGNA + " = "+ TickerManager.getLast(MAGNA, 3));		
+		logger.info("last 3 Entry for " + wig + " = "+ TickerManager.getLast(wig, 3));		
+		logger.info("last 2 Entry for " + kghm + " = "+ TickerManager.getLast(kghm, 2));
+		
+	}
+	
+	@Test
+	@Ignore
+	public void testMACD() throws Exception {
+		
+		
+		List<Ticker> tickers = dd.downloadData();
+		//assertThat(tickers.size(), equalTo(notNullValue()));
+
+		String kghm = "KGHM";		
+	
+		
+		TickerManager.ins();
+		logger.info("last 3 Entry for " + kghm + " = "+ TickerManager.getLast(kghm, 3));		
+		
 		
 	}
 

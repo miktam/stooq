@@ -22,11 +22,11 @@ public class EntryDayTicker {
 
 	public final String name;
 	public final DateTime date;
-	public final float open;
-	public final float high;
-	public final float low;
-	public final float close;
-	public final float vol;
+	public final double open;
+	public final double high;
+	public final double low;
+	public final double close;
+	public final double vol;
 
 	public EntryDayTicker(String entry) {
 		super();
@@ -36,11 +36,11 @@ public class EntryDayTicker {
 
 		this.name = current[0];
 		this.date = formatter.parseDateTime(current[1]);
-		this.open = Float.parseFloat(current[2]);
-		this.high = Float.parseFloat(current[3]);
-		this.low = Float.parseFloat(current[4]);
-		this.close = Float.parseFloat(current[5]);
-		this.vol = Float.parseFloat(current[6]);
+		this.open = Double.parseDouble(current[2]);
+		this.high = Double.parseDouble(current[3]);
+		this.low = Double.parseDouble(current[4]);
+		this.close = Double.parseDouble(current[5]);
+		this.vol = Double.parseDouble(current[6]);
 	}
 
 }

@@ -36,10 +36,13 @@ public class DataDownloaderImpl implements DataDownloader {
 	private String contentType;
 	private int contentLength;
 	private long now;
+	
+	// set to true if there is new file from internet
+	private boolean forceDoNotUseZipCache = false;
 
 	@Override
 	public List<Ticker> downloadData() throws Exception {
-		logger.debug("start download");
+		logger.trace("start download");
 
 		now = s();
 		URLConnection urlConnection = readFromUrl(bossaDataInZip);
@@ -70,6 +73,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 		} else {
 
+			forceDoNotUseZipCache = true;
 			InputStream raw = urlConnection.getInputStream();
 			InputStream in = new BufferedInputStream(raw);
 			byte[] data = new byte[contentLength];
@@ -99,7 +103,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 			now = f("wrote all bytes", now);
 
-			logger.info("Read from network: " + out.toString());
+			logger.trace("Read from network: " + out.toString());
 		}
 		return filenameStoredLocally;
 	}
@@ -123,14 +127,14 @@ public class DataDownloaderImpl implements DataDownloader {
 			BufferedInputStream is = null;
 			ZipEntry entry;
 			ZipFile zipfile = new ZipFile(path);
-			Enumeration e = zipfile.entries();
+			Enumeration<? extends ZipEntry> e = zipfile.entries();
 
 			int howManyEntriesInZip = zipfile.size();
-			logger.info("files in zip: " + howManyEntriesInZip);
+			logger.trace("files in zip: " + howManyEntriesInZip);
 			File directoryWhereFilesWillBeCreated = new File(
 					extractedFilesDirectory);
 			int alreadyInDir = directoryWhereFilesWillBeCreated.list().length;
-			if (alreadyInDir == howManyEntriesInZip) {
+			if (alreadyInDir == howManyEntriesInZip && forceDoNotUseZipCache == false) {
 				logger.info("CACHE unzipping!: already " + howManyEntriesInZip
 						+ " files in directory");
 				List<File> filesCached = Arrays.asList(directoryWhereFilesWillBeCreated.listFiles());
@@ -167,7 +171,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 	private URLConnection readFromUrl(String url) throws MalformedURLException,
 			IOException {
-		logger.info("get tickers from net");
+		logger.trace("get tickers from net");
 
 		URL u = new URL(url);
 		URLConnection uc = u.openConnection();

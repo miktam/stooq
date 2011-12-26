@@ -25,6 +25,20 @@ public class TickerManager {
 		Ticker t = nameTickerMap.get(name);
 		return t.getList().subList(t.getList().size() - howMany, t.getList().size());
 	}
+	
+	public static double[] getCloseFor(String tickerName, int howMany)
+	{
+		double [] result = new double[howMany];		
+		List<EntryDayTicker> tickers = getLast(tickerName, howMany);		
+		
+		int c = 0;
+		for (EntryDayTicker t:tickers)
+		{
+			result[c++] = t.close;
+		}
+		
+		return result;		
+	}
 
 	public Map<String, Ticker> getNameTickerMap() {
 		return nameTickerMap;
