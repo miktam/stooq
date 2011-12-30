@@ -77,7 +77,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 		long sizeOfStoredFile = new File(filenameStoredLocally).length();
 		if (sizeOfStoredFile == contentLength) {
-			logger.info("USE CACHE! stored file size: " + sizeOfStoredFile
+			logger.warn("USE CACHE! stored file size: " + sizeOfStoredFile
 					+ " is equals to urlContentLengh");
 
 		} else {
@@ -103,7 +103,7 @@ public class DataDownloaderImpl implements DataDownloader {
 						+ " bytes; Expected " + contentLength + " bytes");
 			}
 
-			logger.info("Just read bytes from network: " + offset);
+			logger.trace("Just read bytes from network: " + offset);
 
 			FileOutputStream out = new FileOutputStream(filenameStoredLocally);
 			out.write(data);
@@ -145,7 +145,7 @@ public class DataDownloaderImpl implements DataDownloader {
 			int alreadyInDir = directoryWhereFilesWillBeCreated.list().length;
 			if (alreadyInDir == howManyEntriesInZip
 					&& filesAreFreshUnzipThem == false) {
-				logger.info("CACHE unzipping!: already " + howManyEntriesInZip
+				logger.warn("CACHE unzipping!: already " + howManyEntriesInZip
 						+ " files in directory");
 				List<File> filesCached = Arrays
 						.asList(directoryWhereFilesWillBeCreated.listFiles());
@@ -188,7 +188,7 @@ public class DataDownloaderImpl implements DataDownloader {
 		URLConnection uc = u.openConnection();
 		contentType = uc.getContentType();
 		contentLength = uc.getContentLength();
-		logger.info("content type: " + contentType + " and lenght: "
+		logger.debug("content type: " + contentType + " and lenght: "
 				+ contentLength);
 
 		return uc;

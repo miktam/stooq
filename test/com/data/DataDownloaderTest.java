@@ -2,8 +2,6 @@ package com.data;
 
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -24,12 +22,8 @@ public class DataDownloaderTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		BasicConfigurator.configure();
-		Logger.getRootLogger().setLevel(Level.DEBUG);
 		dd = new DataDownloaderImpl();
 	}
-	
-	
 
 	@Ignore
 	@Test
@@ -58,10 +52,12 @@ public class DataDownloaderTest {
 		String kghm = "KGHM";
 		TickerManager.ins();
 		Ticker kg = TickerManager.getTickerFor(kghm);
-		kg.taSMA(SMA.SMA50);
+
 		kg.taSMA(SMA.SMA15);
+		kg.taSMA(SMA.SMA30);
+		kg.taSMA(SMA.SMA45);
+
 		logger.info(kg.toString(50));
-		// Tool.pa(TickerManager.getCloseFor(kghm, 10));
 	}
 
 	@Test

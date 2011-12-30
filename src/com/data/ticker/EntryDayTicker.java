@@ -1,5 +1,6 @@
 package com.data.ticker;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,4 +54,10 @@ public class EntryDayTicker {
 		this.vol = Double.parseDouble(current[6]);
 	}
 
+	String getSMA(SMA sma)
+	{
+		Double result = smaMap.get(sma);
+		return (result == null)?"":", " + sma + "=" + new DecimalFormat("##.##").format(result);
+	}
+	
 }

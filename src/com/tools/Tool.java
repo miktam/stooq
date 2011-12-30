@@ -1,5 +1,7 @@
 package com.tools;
 
+import java.text.DecimalFormat;
+
 import org.apache.log4j.Logger;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -32,6 +34,15 @@ public class Tool {
 	public static DateTimeFormatter dm()
 	{
 		return  DateTimeFormat.forPattern("dd-MM");
+	}
+	
+	/**
+	 * list decimal as 22.22
+	 * @return
+	 */
+	public static DecimalFormat df()
+	{
+		return new DecimalFormat("##.##");
 	}
 
 }
