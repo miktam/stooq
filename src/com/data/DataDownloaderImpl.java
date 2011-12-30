@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -36,9 +37,9 @@ public class DataDownloaderImpl implements DataDownloader {
 	private String contentType;
 	private int contentLength;
 	private long now;
-	
+
 	// set to true if there is new file from internet
-	private boolean forceDoNotUseZipCache = false;
+	private boolean filesAreFreshUnzipThem = false;
 
 	@Override
 	public List<Ticker> downloadData() throws Exception {
@@ -48,23 +49,31 @@ public class DataDownloaderImpl implements DataDownloader {
 		URLConnection urlConnection = readFromUrl(bossaDataInZip);
 		now = f("create url connection", now);
 
-		String filename = writeUrlLocally(urlConnection);
-		now = f("wrote file locally", now);
+		String filename;
+		try {
+			filename = writeUrlLocally(urlConnection);
+			now = f("wrote file locally", now);
+		} catch (java.net.UnknownHostException e) {
+
+			logger.warn(e);
+			logger.warn("try to use cached data in :" + filenameStoredLocally);
+			filename = filenameStoredLocally;
+		}
 
 		List<String> extractedFiles = unzipFile(filename);
 		now = f("extracted files", now);
-		
+
 		List<Ticker> tickers = FileParser.parseFiles(extractedFiles);
 		now = f("created tickers", now);
-		
+
 		TickerManager.ins().loadTickers(tickers);
 		now = f("load ticker manager", now);
-		
+
 		return tickers;
 	}
 
 	private String writeUrlLocally(URLConnection urlConnection)
-			throws IOException, FileNotFoundException {
+			throws IOException, FileNotFoundException, UnknownHostException {
 
 		long sizeOfStoredFile = new File(filenameStoredLocally).length();
 		if (sizeOfStoredFile == contentLength) {
@@ -73,7 +82,7 @@ public class DataDownloaderImpl implements DataDownloader {
 
 		} else {
 
-			forceDoNotUseZipCache = true;
+			filesAreFreshUnzipThem = true;
 			InputStream raw = urlConnection.getInputStream();
 			InputStream in = new BufferedInputStream(raw);
 			byte[] data = new byte[contentLength];
@@ -134,12 +143,14 @@ public class DataDownloaderImpl implements DataDownloader {
 			File directoryWhereFilesWillBeCreated = new File(
 					extractedFilesDirectory);
 			int alreadyInDir = directoryWhereFilesWillBeCreated.list().length;
-			if (alreadyInDir == howManyEntriesInZip && forceDoNotUseZipCache == false) {
+			if (alreadyInDir == howManyEntriesInZip
+					&& filesAreFreshUnzipThem == false) {
 				logger.info("CACHE unzipping!: already " + howManyEntriesInZip
 						+ " files in directory");
-				List<File> filesCached = Arrays.asList(directoryWhereFilesWillBeCreated.listFiles());
-				for (File f:filesCached)
-					extractedFiles.add(f.getAbsolutePath());				
+				List<File> filesCached = Arrays
+						.asList(directoryWhereFilesWillBeCreated.listFiles());
+				for (File f : filesCached)
+					extractedFiles.add(f.getAbsolutePath());
 			} else {
 
 				while (e.hasMoreElements()) {

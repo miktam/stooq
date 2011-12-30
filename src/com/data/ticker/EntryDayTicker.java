@@ -1,23 +1,29 @@
 package com.data.ticker;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import com.data.ta.SMA;
+import com.tools.Tool;
+
 public class EntryDayTicker {
-	
+
 	private static Logger logger = Logger.getLogger(EntryDayTicker.class);
-	
-	private static DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd");
-	
+
+	private static DateTimeFormatter formatter = DateTimeFormat
+			.forPattern("yyyyMMdd");
+
 	@Override
 	public String toString() {
-		return "Ticker [name=" + name + ", date=" + date.toString(DateTimeFormat.forPattern("dd-MM-yyyy")) + ", open=" + open
-				+ ", high=" + high + ", low=" + low + ", close=" + close
-				+ ", vol=" + vol + "]";
+		return "Ticker [name=" + name + ", date=" + date.toString(Tool.dmy())
+				+ ", open=" + open + ", high=" + high + ", low=" + low
+				+ ", close=" + close + ", vol=" + vol + "]";
 	}
 
 	public final String name;
@@ -27,6 +33,10 @@ public class EntryDayTicker {
 	public final double low;
 	public final double close;
 	public final double vol;
+
+	public double sma50;
+
+	public Map<SMA, Double> smaMap = new HashMap<SMA, Double>();
 
 	public EntryDayTicker(String entry) {
 		super();

@@ -11,12 +11,29 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 
+import com.data.ta.SMA;
+import com.tools.Tool;
+
 public class Ticker {
 
 	@Override
 	public String toString() {
 		return "Ticker [ticker=" + ticker + ", firstLine=" + firstLine
 				+ ", map size=" + map.size() + "]";
+	}
+
+	public String toString(int lastCloses) {
+		StringBuilder sb = new StringBuilder();
+
+		int listSize = getList().size();
+		
+		List<EntryDayTicker> sublist = getList().subList(listSize - lastCloses,	listSize);
+
+		for (EntryDayTicker edt : sublist ) {
+			sb.append(edt.date.toString(Tool.dm()) + ":" + edt.close + ", ");
+		}
+
+		return ticker + " last " + lastCloses + ":" + sb;
 	}
 
 	private static Logger logger = Logger.getLogger(Ticker.class);
@@ -33,9 +50,8 @@ public class Ticker {
 	public Map<DateTime, EntryDayTicker> getMap() {
 		return map;
 	}
-	
-	public List<EntryDayTicker> getList()
-	{
+
+	public List<EntryDayTicker> getList() {
 		return list;
 	}
 
@@ -87,5 +103,35 @@ public class Ticker {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void taSMA(SMA sma)
+	{
+		int days = sma.value();
+		
+		logger.info("start counting sma for " + ticker);
+		EntryDayTicker[] last100 = new EntryDayTicker[days*2];
+		Object []rawEdt = getList().subList(getList().size() - days*2 , getList().size()).toArray();
+		
+		logger.info("raw edit length:" + rawEdt.length);
+		
+		for (int i = 0; i < rawEdt.length; i++) {
+			last100[i] = (EntryDayTicker) rawEdt[i];
+		}				
+	
+		for (int i = days; i < days*2; i++)
+		{
+			// collect 50 previous values
+			double all50 = 0;
+			for (int y = i-(days-1); y <= i ; y++)
+			{
+				all50+=last100[y].close;
+			}
+			last100[i].sma50 = all50 / days;
+			
+			last100[i].smaMap.put(sma, all50/days);
+			
+			logger.info("sma50 for " + last100[i].date.toString(Tool.dm()) + "=" + last100[i].sma50);
+		}		
+	}
+	
 }

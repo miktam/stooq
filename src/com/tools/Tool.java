@@ -1,6 +1,8 @@
 package com.tools;
 
 import org.apache.log4j.Logger;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class Tool {
 	
@@ -20,6 +22,16 @@ public class Tool {
 		}
 		
 		logger.info(sb.toString());
+	}
+	
+	public static DateTimeFormatter dmy()
+	{
+		return  DateTimeFormat.forPattern("dd-MM-yyyy");
+	}
+	
+	public static DateTimeFormatter dm()
+	{
+		return  DateTimeFormat.forPattern("dd-MM");
 	}
 
 }
