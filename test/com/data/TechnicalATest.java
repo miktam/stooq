@@ -27,41 +27,41 @@ public class TechnicalATest {
 
 	static public double[] close = new double[252];
 
-	@Test
-	public void test_MACD_KGHM() throws Exception {
-
-		dd.downloadData();
-		String kghm = "KGHM";
-		TickerManager.ins();
-		close = TickerManager.getCloseFor(kghm, 252);
-		logger.info("lenght of close = " + close.length);
-		double macd[] = new double[close.length];
-		double signal[] = new double[close.length];
-		double hist[] = new double[close.length];
-		lookback = lib.macdLookback(15, 26, 9);
-		retCode = lib.macd(0, close.length - 1, close, 15, 26, 9, outBegIdx,
-				outNbElement, macd, signal, hist);
-
-		double ema15[] = new double[close.length];
-		lookback = lib.emaLookback(15);
-		retCode = lib.ema(0, close.length - 1, close, 15, outBegIdx,
-				outNbElement, ema15);
-
-		double ema26[] = new double[close.length];
-		lookback = lib.emaLookback(26);
-		retCode = lib.ema(0, close.length - 1, close, 26, outBegIdx,
-				outNbElement, ema26);
-
-		logger.info("ema 15");
-		pa(ema15);
-		pa(ema26);
-
-		pa(macd);
-		
-		pa(signal);
-
-		// TODO Add tests of outputs
-	}
+//	@Test
+//	public void test_MACD_KGHM() throws Exception {
+//
+//		dd.downloadData();
+//		String kghm = "KGHM";
+//		TickerManager.ins();
+//		close = TickerManager.getCloseFor(kghm, 252);
+//		logger.info("lenght of close = " + close.length);
+//		double macd[] = new double[close.length];
+//		double signal[] = new double[close.length];
+//		double hist[] = new double[close.length];
+//		lookback = lib.macdLookback(15, 26, 9);
+//		retCode = lib.macd(0, close.length - 1, close, 15, 26, 9, outBegIdx,
+//				outNbElement, macd, signal, hist);
+//
+//		double ema15[] = new double[close.length];
+//		lookback = lib.emaLookback(15);
+//		retCode = lib.ema(0, close.length - 1, close, 15, outBegIdx,
+//				outNbElement, ema15);
+//
+//		double ema26[] = new double[close.length];
+//		lookback = lib.emaLookback(26);
+//		retCode = lib.ema(0, close.length - 1, close, 26, outBegIdx,
+//				outNbElement, ema26);
+//
+//		logger.info("ema 15");
+//		pa(ema15);
+//		pa(ema26);
+//
+//		pa(macd);
+//		
+//		pa(signal);
+//
+//		// TODO Add tests of outputs
+//	}
 
 	public static void pa(double[] arr) {
 		StringBuilder sb = new StringBuilder();

@@ -109,7 +109,7 @@ public class Ticker {
 			sb.append(Tool.df().format(value) + ", ");
 		}
 
-		logger.info(sma + " for " + ticker + ": " + sb);
+		logger.trace(sma + " for " + ticker + ": " + sb);
 	}
 
 	@Override
@@ -134,6 +134,12 @@ public class Ticker {
 		}
 
 		return ticker + " last " + lastCloses + ":" + sb;
+	}
+
+	public List<EntryDayTicker> getLast(int last) {
+		int listSize = getList().size();
+		return getList().subList(listSize - last,
+				listSize);		
 	}
 
 }

@@ -35,8 +35,6 @@ public class EntryDayTicker {
 	public final double close;
 	public final double vol;
 
-	public double sma50;
-
 	public Map<SMA, Double> smaMap = new HashMap<SMA, Double>();
 
 	public EntryDayTicker(String entry) {
@@ -54,10 +52,35 @@ public class EntryDayTicker {
 		this.vol = Double.parseDouble(current[6]);
 	}
 
-	String getSMA(SMA sma)
-	{
+	String getSMA(SMA sma) {
 		Double result = smaMap.get(sma);
-		return (result == null)?"":", " + sma + "=" + new DecimalFormat("##.##").format(result);
+		return (result == null) ? "" : ", " + sma + "="
+				+ new DecimalFormat("##.##").format(result);
 	}
-	
+
+	public boolean isCloseBiggerAnySMA() {
+		boolean signal = false;
+		if (anySMAexists()) {
+
+			if (smaMap.get(SMA.SMA15) != null && close > smaMap.get(SMA.SMA15)
+					|| smaMap.get(SMA.SMA30) != null
+					&& close > smaMap.get(SMA.SMA30)
+					|| smaMap.get(SMA.SMA45) != null
+					&& close > smaMap.get(SMA.SMA45)) {
+				//logger.info("close is bigger than SMA: " + name + " " + date.toString(Tool.dm()));
+				signal = true;
+			}
+		}
+		return signal;
+	}
+
+	private boolean anySMAexists() {
+		boolean res = false;
+		if (smaMap.get(SMA.SMA15) != null || smaMap.get(SMA.SMA30) != null
+				|| smaMap.get(SMA.SMA45) != null)
+			return true;
+
+		return res;
+	}
+
 }

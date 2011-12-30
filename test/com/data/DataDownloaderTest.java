@@ -1,5 +1,6 @@
 package com.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -44,6 +45,30 @@ public class DataDownloaderTest {
 		logger.info(kg.toString(10));
 		// Tool.pa(TickerManager.getCloseFor(kghm, 10));
 	}
+	
+	@Test
+	public void checkSignals() throws Exception
+	{
+		DataDownloader dd = new DataDownloaderImpl();
+		dd.downloadData();
+		
+		List<String> tickersName = new ArrayList<String> (){{
+			add("KGHM");
+			add("CIECH");
+			add("PKNORLEN");
+			add("LOTOS");
+			add("ZYWIEC");
+			add("MILLENNIUM");
+			add("DEBICA");
+			add("KETY");
+			add("DEBICA");
+			add("BANKBPH");
+		}};
+			
+		
+		List<Ticker> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName);
+		logger.info(interesting);
+	}
 
 	@Test
 	public void getSMA() throws Exception {
@@ -57,41 +82,6 @@ public class DataDownloaderTest {
 		kg.taSMA(SMA.SMA30);
 		kg.taSMA(SMA.SMA45);
 
-		logger.info(kg.toString(50));
+		logger.info(kg.toString(45));
 	}
-
-	@Test
-	@Ignore
-	public void getLastTickers() throws Exception {
-
-		List<Ticker> tickers = dd.downloadData();
-		String wig = "WIG20";
-		String kghm = "KGHM";
-		String MAGNA = "06MAGNA";
-
-		TickerManager.ins();
-		logger.info("last 3 Entry for " + MAGNA + " = "
-				+ TickerManager.getLast(MAGNA, 3));
-		logger.info("last 3 Entry for " + wig + " = "
-				+ TickerManager.getLast(wig, 3));
-		logger.info("last 2 Entry for " + kghm + " = "
-				+ TickerManager.getLast(kghm, 2));
-
-	}
-
-	@Test
-	@Ignore
-	public void testMACD() throws Exception {
-
-		List<Ticker> tickers = dd.downloadData();
-		// assertThat(tickers.size(), equalTo(notNullValue()));
-
-		String kghm = "KGHM";
-
-		TickerManager.ins();
-		logger.info("last 3 Entry for " + kghm + " = "
-				+ TickerManager.getLast(kghm, 3));
-
-	}
-
 }
