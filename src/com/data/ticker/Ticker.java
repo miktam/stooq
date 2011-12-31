@@ -114,8 +114,7 @@ public class Ticker {
 
 	@Override
 	public String toString() {
-		return "Ticker [ticker=" + ticker + ", firstLine=" + firstLine
-				+ ", map size=" + map.size() + "]";
+		return ticker;
 	}
 
 	public String toString(int lastCloses) {

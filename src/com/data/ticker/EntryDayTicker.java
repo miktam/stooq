@@ -58,23 +58,7 @@ public class EntryDayTicker {
 				+ new DecimalFormat("##.##").format(result);
 	}
 
-	public boolean isCloseBiggerAnySMA() {
-		boolean signal = false;
-		if (anySMAexists()) {
-
-			if (smaMap.get(SMA.SMA15) != null && close > smaMap.get(SMA.SMA15)
-					|| smaMap.get(SMA.SMA30) != null
-					&& close > smaMap.get(SMA.SMA30)
-					|| smaMap.get(SMA.SMA45) != null
-					&& close > smaMap.get(SMA.SMA45)) {
-				//logger.info("close is bigger than SMA: " + name + " " + date.toString(Tool.dm()));
-				signal = true;
-			}
-		}
-		return signal;
-	}
-
-	private boolean anySMAexists() {
+	public boolean anySMAexists() {
 		boolean res = false;
 		if (smaMap.get(SMA.SMA15) != null || smaMap.get(SMA.SMA30) != null
 				|| smaMap.get(SMA.SMA45) != null)

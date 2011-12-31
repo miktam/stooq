@@ -8,9 +8,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.data.ta.SMA;
+import com.data.ta.Signal;
+import com.data.ta.SignalGenerator;
 import com.data.ticker.EntryDayTicker;
 import com.data.ticker.Ticker;
-import com.tools.Tool;
 
 public class TickerManager {
 
@@ -25,9 +26,8 @@ public class TickerManager {
 		return nameTickerMap.get(name);
 	}
 
-	public static List<Ticker> getSignalsBasedOnSMAFor(List<String> tickersName)
-			throws Exception {
-		List<Ticker> tickersWithSignals = new ArrayList<Ticker>();
+	public static List<Signal> getSignalsBasedOnSMAFor(List<String> tickersName, int days) throws Exception {
+		List<Signal> signals = new ArrayList<Signal>();
 
 		for (String ticker : tickersName) {
 
@@ -38,7 +38,7 @@ public class TickerManager {
 			t.taSMA(SMA.SMA30);
 			t.taSMA(SMA.SMA45);
 
-			List<EntryDayTicker> last = t.getLast(46);
+			List<EntryDayTicker> last = t.getLast(days + 1);
 
 			EntryDayTicker yesterdayEntry = null;
 
@@ -46,37 +46,18 @@ public class TickerManager {
 				if (yesterdayEntry == null)
 					yesterdayEntry = entry;
 				else {
-					if ((yesterdayEntry.isCloseBiggerAnySMA() == false)
-							&& entry.isCloseBiggerAnySMA() == true) {				
-							logger.warn("BUY signal:" + t.ticker + " for " + entry.date.toString(Tool.dm()));
-							tickersWithSignals.add(t);
-						} else if ((yesterdayEntry.isCloseBiggerAnySMA() == true
-							&& entry.isCloseBiggerAnySMA() == false))
-						{
-							logger.warn("SELL signal:" + t.ticker + " for " + entry.date.toString(Tool.dm()));
-						}
-						
-						yesterdayEntry = entry;
-					}
-				
+					Signal s = SignalGenerator.checkSMA(t, yesterdayEntry, entry);
+					if (s != null)
+						signals.add(s);
+					yesterdayEntry = entry;
+				}
+
 			}
 		}
 
-		return tickersWithSignals;
+		return signals;
 
 	}
-
-	// public static double[] getCloseFor(String tickerName, int howMany) {
-	// double[] result = new double[howMany];
-	// List<EntryDayTicker> tickers = getLast(tickerName, howMany);
-	//
-	// int c = 0;
-	// for (EntryDayTicker t : tickers) {
-	// result[c++] = t.close;
-	// }
-	//
-	// return result;
-	// }
 
 	public Map<String, Ticker> getNameTickerMap() {
 		return nameTickerMap;

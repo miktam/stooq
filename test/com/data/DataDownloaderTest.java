@@ -12,6 +12,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.data.ta.SMA;
+import com.data.ta.Signal;
 import com.data.ticker.Ticker;
 
 public class DataDownloaderTest {
@@ -52,6 +53,7 @@ public class DataDownloaderTest {
 		DataDownloader dd = new DataDownloaderImpl();
 		dd.downloadData();
 		
+		@SuppressWarnings("serial")
 		List<String> tickersName = new ArrayList<String> (){{
 			add("KGHM");
 			add("CIECH");
@@ -66,11 +68,12 @@ public class DataDownloaderTest {
 		}};
 			
 		
-		List<Ticker> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName);
+		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName, 10);
 		logger.info(interesting);
 	}
 
 	@Test
+	@Ignore
 	public void getSMA() throws Exception {
 
 		dd.downloadData();
