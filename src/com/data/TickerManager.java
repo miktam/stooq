@@ -32,7 +32,7 @@ public class TickerManager {
 		for (String ticker : tickersName) {
 
 			Ticker t = getTickerFor(ticker);
-			logger.trace("TA: check " + t.ticker);
+			logger.info("TA: check " + ticker + "=" + t.ticker);
 
 			t.taSMA(SMA.SMA15);
 			t.taSMA(SMA.SMA30);

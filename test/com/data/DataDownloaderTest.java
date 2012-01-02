@@ -17,8 +17,7 @@ import com.data.ticker.Ticker;
 
 public class DataDownloaderTest {
 
-	private final static Logger logger = Logger
-			.getLogger(DataDownloaderTest.class);
+	private final static Logger logger = Logger.getLogger(DataDownloaderTest.class);
 
 	static DataDownloader dd;
 
@@ -46,29 +45,42 @@ public class DataDownloaderTest {
 		logger.info(kg.toString(10));
 		// Tool.pa(TickerManager.getCloseFor(kghm, 10));
 	}
-	
+
 	@Test
-	public void checkSignals() throws Exception
-	{
+	public void checkSignals() throws Exception {
 		DataDownloader dd = new DataDownloaderImpl();
 		dd.downloadData();
-		
+
 		@SuppressWarnings("serial")
-		List<String> tickersName = new ArrayList<String> (){{
-			add("KGHM");
-			add("CIECH");
-			add("PKNORLEN");
-			add("LOTOS");
-			add("ZYWIEC");
-			add("MILLENNIUM");
-			add("DEBICA");
-			add("KETY");
-			add("DEBICA");
-			add("BANKBPH");
-		}};
-			
-		
-		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName, 10);
+		List<String> tickersName = new ArrayList<String>() {
+			{
+				add("ASSECOPOL");
+				add("HANDLOWY");
+				add("BRE");
+				add("GTC");
+				add("GETIN");
+				add("JSW");
+				add("KERNEL");
+				add("KGHM");
+				add("LOTOS");
+				add("BOGDANKA");
+				add("PBG");
+				add("PEKAO");
+				add("PGE");
+				add("PGNIG");
+				add("PKNORLEN");
+				add("PKOBP");
+				add("PZU");
+				add("TAURONPE");
+				add("TPSA");
+				add("TVN");
+				add("CIECH");
+				add("ZYWIEC");
+				add("SYNTHOS");
+			}
+		};
+
+		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName, 100);
 		logger.info(interesting);
 	}
 

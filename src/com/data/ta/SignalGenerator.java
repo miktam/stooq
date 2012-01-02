@@ -1,5 +1,8 @@
 package com.data.ta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.data.ticker.EntryDayTicker;
@@ -14,18 +17,33 @@ public class SignalGenerator {
 
 		Signal s = null;
 
-		if ((isCloseBiggerAnySMA(yesterday) == false) && isCloseBiggerAnySMA(today) == true) {
-			logger.warn("BUY signal:" + t.ticker + " for " + today.date.toString(Tool.dm()));
-			// TODO differentiate signal enums
-			s = new Signal(t, today.date, SignalEnum.B_SMA15);
-		} else if ((isCloseBiggerAnySMA(yesterday) == true && isCloseBiggerAnySMA(today) == false)) {
-			logger.warn("SELL signal:" + t.ticker + " for " + today.date.toString(Tool.dm()));
-			s = new Signal(t, today.date, SignalEnum.S_SMA15);
+		List<SMA> smas = new ArrayList<SMA>() {
+			{
+				add(SMA.SMA15);
+				add(SMA.SMA30);
+				add(SMA.SMA45);
+			}
+		};
+
+		// logger.info(today.close + "|sma15=" +
+		// Tool.df().format(today.smaMap.get(SMA.SMA15)) + " "
+		// + today.date.toString(Tool.dm()));
+
+		for (SMA sma : smas) {
+			if ((isCloseBiggerForSMA(yesterday, sma) == false) && isCloseBiggerForSMA(today, sma) == true) {
+				s = new Signal(t, today.date, sma.SMA2Signal(BuySell.BUY));
+			} else if ((isCloseBiggerForSMA(yesterday, sma) == true && isCloseBiggerForSMA(today, sma) == false)) {
+				s = new Signal(t, today.date, sma.SMA2Signal(BuySell.SELL));
+			}
 		}
+
+		if (s != null)
+			logger.warn(s);
 
 		return s;
 	}
 
+	@Deprecated
 	private static boolean isCloseBiggerAnySMA(EntryDayTicker e) {
 		boolean signal = false;
 		if (e.anySMAexists()) {
@@ -33,6 +51,16 @@ public class SignalGenerator {
 					&& e.close > e.smaMap.get(SMA.SMA30) || e.smaMap.get(SMA.SMA45) != null
 					&& e.close > e.smaMap.get(SMA.SMA45)) {
 				// date.toString(Tool.dm()));
+				signal = true;
+			}
+		}
+		return signal;
+	}
+
+	private static boolean isCloseBiggerForSMA(EntryDayTicker e, SMA sma) {
+		boolean signal = false;
+		if (e.anySMAexists()) {
+			if (e.smaMap.get(sma) != null && e.close > e.smaMap.get(sma)) {
 				signal = true;
 			}
 		}
