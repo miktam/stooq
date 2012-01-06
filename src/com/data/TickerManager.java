@@ -78,4 +78,9 @@ public class TickerManager {
 		}
 	}
 
+    public static void calculateRsiFor(Ticker ticker) {
+        
+        logger.debug("calculate rsi for " + ticker);
+        ticker.taRSI();
+    }
 }

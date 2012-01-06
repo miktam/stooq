@@ -20,71 +20,81 @@ public class DataDownloaderTest {
 	private final static Logger logger = Logger.getLogger(DataDownloaderTest.class);
 
 	static DataDownloader dd;
+    static List<String> wig30tickersList;
 
 	@BeforeClass
 	public static void beforeClass() {
+           wig30tickersList = new ArrayList<String>() {
+            {
+                add("ASSECOPOL");
+                add("HANDLOWY");
+                add("BRE");
+                add("GTC");
+                add("GETIN");
+                add("JSW");
+                add("KERNEL");
+                add("KGHM");
+                add("LOTOS");
+                add("BOGDANKA");
+                add("PBG");
+                add("PEKAO");
+                add("PGE");
+                add("PGNIG");
+                add("PKNORLEN");
+                add("PKOBP");
+                add("PZU");
+                add("TAURONPE");
+                add("TPSA");
+                add("TVN");
+
+                add("PETROLINV");
+                add("HAWE");
+                add("BORYSZEW");
+                add("PEP");
+                add("POLIMEXMS");
+                add("CYFRPLSAT");
+                add("CIECH");
+                add("SYNTHOS");
+            }
+        };
+
 		dd = new DataDownloaderImpl();
 	}
 
-	@Ignore
 	@Test
-	public void createDate() {
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd");
-		DateTime dateTime = formatter.parseDateTime("20111230");
-		logger.info(dateTime);
-	}
+    public void calcRsi() throws Exception {
 
-	@Ignore
-	@Test
-	public void getClosedPriceForTickers() throws Exception {
+        dd.downloadData();
+        String kghm = "KGHM";
+        TickerManager.ins();
+        Ticker kg = TickerManager.getTickerFor(kghm);
 
-		dd.downloadData();
-		String kghm = "KGHM";
-		TickerManager.ins();
-		Ticker kg = TickerManager.getTickerFor(kghm);
-		logger.info(kg.toString(10));
-		// Tool.pa(TickerManager.getCloseFor(kghm, 10));
-	}
+        TickerManager.calculateRsiFor(kg);
+        // Tool.pa(TickerManager.getCloseFor(kghm, 10));
+    }
 
 	@Test
-	public void checkSignals() throws Exception {
+	public void checkSignalsWIG20() throws Exception {
 		DataDownloader dd = new DataDownloaderImpl();
 		dd.downloadData();
-
-		@SuppressWarnings("serial")
-		List<String> tickersName = new ArrayList<String>() {
-			{
-				add("ASSECOPOL");
-				add("HANDLOWY");
-				add("BRE");
-				add("GTC");
-				add("GETIN");
-				add("JSW");
-				add("KERNEL");
-				add("KGHM");
-				add("LOTOS");
-				add("BOGDANKA");
-				add("PBG");
-				add("PEKAO");
-				add("PGE");
-				add("PGNIG");
-				add("PKNORLEN");
-				add("PKOBP");
-				add("PZU");
-				add("TAURONPE");
-				add("TPSA");
-				add("TVN");
-				add("CIECH");
-				add("ZYWIEC");
-				add("SYNTHOS");
-			}
-		};
-
-		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(tickersName, 100);
+		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(wig30tickersList, 100);
 		logger.info(interesting);
 	}
 
-	@Test
+
+    @Ignore
+    @Test
+    public void getClosedPriceForTickers() throws Exception {
+
+        dd.downloadData();
+        String kghm = "KGHM";
+        TickerManager.ins();
+        Ticker kg = TickerManager.getTickerFor(kghm);
+        logger.info(kg.toString(10));
+        // Tool.pa(TickerManager.getCloseFor(kghm, 10));
+    }
+
+    @Test
 	@Ignore
 	public void getSMA() throws Exception {
 
