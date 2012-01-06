@@ -97,7 +97,7 @@ public class Ticker {
             prev = current;
             
             
-            logger.debug(current);
+            logger.trace(current);
         }
 
 
