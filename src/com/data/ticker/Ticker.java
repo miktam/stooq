@@ -103,7 +103,7 @@ public class Ticker {
         }
 
         List<EntryDayTicker> last = new LinkedList<EntryDayTicker>(getLast(lookback));
-        logger.info("start counting RS for first 14 days");
+        logger.trace("start counting RS for first 14 days");
 
         ListIterator<EntryDayTicker> first14days = last.listIterator(period);
 

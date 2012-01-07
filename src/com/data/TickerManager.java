@@ -26,6 +26,35 @@ public class TickerManager {
 		return nameTickerMap.get(name);
 	}
 
+    public static List<Signal> getSignalsBasedOnRsiFor(List<String> tickersName) throws Exception {
+        List<Signal> signals = new ArrayList<Signal>();
+        int days = 14;
+
+        for (String ticker : tickersName) {
+
+            Ticker t = getTickerFor(ticker);
+            logger.info("TA: check " + ticker + "=" + t.ticker);
+
+            t.taRSI();
+            List<EntryDayTicker> last = t.getLast(days);
+
+            EntryDayTicker yesterdayEntry = null;
+
+            for (EntryDayTicker entry : last) {
+                if (yesterdayEntry == null)
+                    yesterdayEntry = entry;
+                else {
+                    Signal s = SignalGenerator.checkRSI(t, yesterdayEntry, entry);
+                    if (s != null)
+                        signals.add(s);
+                    yesterdayEntry = entry;
+                }
+            }
+        }
+
+        return signals;
+    }
+
 	public static List<Signal> getSignalsBasedOnSMAFor(List<String> tickersName, int days) throws Exception {
 		List<Signal> signals = new ArrayList<Signal>();
 
@@ -77,10 +106,4 @@ public class TickerManager {
 			nameTickerMap.put(t.ticker, t);
 		}
 	}
-
-    public static void calculateRsiFor(Ticker ticker) {
-        
-        logger.debug("calculate rsi for " + ticker);
-        ticker.taRSI();
-    }
 }

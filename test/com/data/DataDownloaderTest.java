@@ -63,23 +63,11 @@ public class DataDownloaderTest {
 	}
 
 	@Test
-    public void calcRsi() throws Exception {
+    public void checkSignalsRsi() throws Exception {
 
         dd.downloadData();
-        String kghm = "KGHM";
-        TickerManager.ins();
-        Ticker kg = TickerManager.getTickerFor(kghm);
-
-        TickerManager.calculateRsiFor(kg);
-        
-        double[] res = kg.getRsi(10);
-        
-        for (int i = 0; i<res.length; i++)
-        {
-            logger.trace(res[i]);
-        }
-
-        // Tool.pa(TickerManager.getCloseFor(kghm, 10));
+        List<Signal> interesting = TickerManager.getSignalsBasedOnRsiFor(wig30tickersList);
+       listSignals(interesting);
     }
 
 	@Test
@@ -89,6 +77,14 @@ public class DataDownloaderTest {
 		List<Signal> interesting = TickerManager.getSignalsBasedOnSMAFor(wig30tickersList, 100);
 		logger.info(interesting);
 	}
+    
+    private void listSignals(List<Signal> s)
+    {
+        for (Signal sig:s)
+        {
+            logger.warn(sig);
+        }
+    }
 
 
     @Ignore
