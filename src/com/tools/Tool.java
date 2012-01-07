@@ -38,7 +38,7 @@ public class Tool {
 	
 	/**
 	 * list decimal as 22.22
-	 * @return
+	 * @return as Tool.df().format(DOUBLE))
 	 */
 	public static DecimalFormat df()
 	{

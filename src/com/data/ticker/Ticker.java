@@ -10,6 +10,8 @@ import org.joda.time.DateTime;
 import com.data.ta.SMA;
 import com.tools.Tool;
 
+import static com.tools.Tool.df;
+
 public class Ticker {
 
     private static Logger logger = Logger.getLogger(Ticker.class);
@@ -83,11 +85,13 @@ public class Ticker {
      * First Average Loss = Total of Losses during past 14 periods / 14
      */
     public void taRSI() {
-        int lookback = 100;
+        int lookback = 80;
         int period = 14;
+        
+        logger.trace("count gain/losses for more than lookback");
 
-        List<EntryDayTicker> last = getLast(100);
-        ListIterator<EntryDayTicker> it = last.listIterator();
+        List<EntryDayTicker> entriesToCountGainLosses = new LinkedList<EntryDayTicker>(getLast(lookback+period+1));
+         ListIterator<EntryDayTicker> it = entriesToCountGainLosses.listIterator();
 
         EntryDayTicker prev = it.next();
         while (it.hasNext()) {
@@ -95,16 +99,75 @@ public class Ticker {
             current.setChange(current.close - prev.close);
 
             prev = current;
-            
-            
             logger.trace(current);
         }
 
+        List<EntryDayTicker> last = new LinkedList<EntryDayTicker>(getLast(lookback));
+        logger.info("start counting RS for first 14 days");
 
-        double rs = 0;
+        ListIterator<EntryDayTicker> first14days = last.listIterator(period);
 
+        double gains = 0;
+        double losses = 0;
+        while (first14days.hasPrevious()) {
+            // count ave gains and loss
+            EntryDayTicker today = first14days.previous();
+            logger.trace("calculate gains/losses for+" + today);
+            gains += today.getGain();
+            losses += today.getLoss();
+        }
 
-        double RSI = 100 - (100 / 1 + rs);
+        double avgGain = gains / 14;
+        double avgLoss = losses / 14;
+        
+        double RS = avgGain / avgLoss;
+
+        double RSI = 100-(100/(1+RS));
+        EntryDayTicker t = last.get(--period);
+        t.setRSI(RSI);
+
+        logger.trace("avgGain:" + df().format(avgGain) + ", avgLoss:" + df().format(avgLoss) + ", RS:" + df().format(RS) + ", RSI:" + df().format(RSI) + " for " + t.date.toString(Tool.dm())+ ", close =" + t.close);
+
+        logger.trace("calculate RSI for next days");
+        ListIterator<EntryDayTicker> nextDays = last.listIterator(period);
+
+        // skip day which is already calculated
+        nextDays.next();
+
+        double previousAvgGain = avgGain;
+        double previousAvgLoss = avgLoss;
+
+        while (nextDays.hasNext()) {
+            EntryDayTicker entry = nextDays.next();
+
+            // calculate avg gain/loss
+            previousAvgGain = (previousAvgGain * 13 + entry.getGain()) / 14;
+            previousAvgLoss = (previousAvgLoss * 13 + entry.getLoss()) / 14;
+
+            RS = previousAvgGain / previousAvgLoss;
+
+            RSI = 100-(100/(1+RS));
+            entry.setRSI(RSI);
+            logger.trace("avgGain:" + df().format(previousAvgGain) + ", avgLoss:" + df().format(previousAvgLoss) + ", RS:" + df().format(RS) + ", RSI:" + df().format(RSI) + " for " + entry.date.toString(Tool.dm()) + ", close =" + entry.close);
+        }
+    }
+
+    public double[] getRsi(int howMany)
+    {
+        double[] res = new double[howMany];
+        List<EntryDayTicker> lastEntry = getLast(howMany);
+        
+        StringBuffer sb = new StringBuffer();
+
+        int counter = 0;
+        for (EntryDayTicker e : lastEntry) {
+            sb.append(e.date.toString(Tool.dm()) + ", rsi = " + e.getRSI());
+            res[counter] = e.getRSI();
+            counter++;
+        }
+        
+        logger.info(sb);
+        return res;
     }
 
     public void taSMA(SMA sma) {

@@ -3,6 +3,7 @@ package com.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tools.Tool;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -70,6 +71,14 @@ public class DataDownloaderTest {
         Ticker kg = TickerManager.getTickerFor(kghm);
 
         TickerManager.calculateRsiFor(kg);
+        
+        double[] res = kg.getRsi(10);
+        
+        for (int i = 0; i<res.length; i++)
+        {
+            logger.trace(res[i]);
+        }
+
         // Tool.pa(TickerManager.getCloseFor(kghm, 10));
     }
 

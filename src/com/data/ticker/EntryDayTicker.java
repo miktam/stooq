@@ -24,7 +24,7 @@ public class EntryDayTicker {
     public String toString() {
         return "Ticker [name=" + name + ", date=" + date.toString(Tool.dmy())
                 + ", open=" + open + ", high=" + high + ", low=" + low
-                + ", close=" + close + ", vol=" + vol + (gain>0?(", gain=" +  Tool.df().format(gain)):"") + (loss>0?(" ,loss=" + Tool.df().format(loss)):"") + "]";
+                + ", close=" + close + ", vol=" + vol + (gain>0?(", gain=" +  Tool.df().format(gain)):"") + (loss>0?(" ,loss=" + Tool.df().format(loss)):"") + ", rsi=" + RSI +"]";
     }
 
     public final String name;
@@ -50,10 +50,10 @@ public class EntryDayTicker {
             loss = 0;
             gain = 0;
         }
-
     }
 
     public void setRSI(double rsi) {
+        logger.trace("set RSI=" + rsi + " for " + date.toString(Tool.dm()) + " with close=" + close);
         this.RSI = rsi;
     }
 
@@ -93,4 +93,11 @@ public class EntryDayTicker {
         return res;
     }
 
+    public double getGain() {
+        return gain;
+    }
+
+    public double getLoss() {
+        return loss;
+    }
 }
