@@ -26,6 +26,40 @@ public class TickerManager {
 		return nameTickerMap.get(name);
 	}
 
+    public static List<Signal> getSignalsBasedOnRsiForAll(List<Ticker> tickers, int days) {
+
+        List<Signal> signals = new ArrayList<Signal>();
+
+        for (Ticker ticker : tickers) {
+            logger.trace("TA: check " + ticker);
+            
+            try {
+                ticker.taRSI();
+            }
+            catch (java.lang.IndexOutOfBoundsException e)
+            {
+                logger.warn(ticker + " " + e);
+                continue;
+            }
+            List<EntryDayTicker> last = ticker.getLast(days);
+
+            EntryDayTicker yesterdayEntry = null;
+
+            for (EntryDayTicker entry : last) {
+                if (yesterdayEntry == null)
+                    yesterdayEntry = entry;
+                else {
+                    Signal s = SignalGenerator.checkRSI(ticker, yesterdayEntry, entry);
+                    if (s != null)
+                        signals.add(s);
+                    yesterdayEntry = entry;
+                }
+            }
+        }
+
+        return signals;
+    }
+
     public static List<Signal> getSignalsBasedOnRsiFor(List<String> tickersName) throws Exception {
         List<Signal> signals = new ArrayList<Signal>();
         int days = 14;
@@ -106,4 +140,6 @@ public class TickerManager {
 			nameTickerMap.put(t.ticker, t);
 		}
 	}
+
+
 }
