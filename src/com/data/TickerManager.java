@@ -38,7 +38,7 @@ public class TickerManager {
             }
             catch (java.lang.IndexOutOfBoundsException e)
             {
-                logger.warn(ticker + " " + e);
+                logger.trace(ticker + " " + e);
                 continue;
             }
             List<EntryDayTicker> last = ticker.getLast(days);
