@@ -34,7 +34,7 @@ public class SignalGenerator {
         }
 
         if (s != null)
-            logger.warn(s);
+            logger.trace(s);
 
         return s;
     }

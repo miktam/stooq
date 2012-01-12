@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2ce1bb52-6f2e-4f43-a70b-b7fce257f0d0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/TickerManager.java" afterPath="$PROJECT_DIR$/src/com/data/TickerManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" afterPath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
     </list>
     <ignored path="Stooq.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,40 +91,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataDownloaderTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DataDownloaderTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="28" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0">
+            <state line="76" column="36" selection-start="2016" selection-end="2016" vertical-scroll-proportion="-0.557971">
               <folding>
-                <element signature="e#1947#1955#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2398#2406#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ticker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="0" selection-start="7487" selection-end="7487" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntryDayTicker.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="16" selection-start="1087" selection-end="1092" vertical-scroll-proportion="0.8197065">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -129,52 +106,7 @@
       <file leaf-file-name="TickerManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="57" selection-start="741" selection-end="767" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Signal.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ta/Signal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="63" selection-start="277" selection-end="281" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignalEnum.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="12" selection-start="228" selection-end="236" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="41" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataDownloaderImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="37" selection-start="5285" selection-end="5296" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataDownloader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+            <state line="76" column="45" selection-start="2224" selection-end="2224" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -199,8 +131,8 @@
         <option value="$PROJECT_DIR$/src/com/tools/Tool.java" />
         <option value="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" />
         <option value="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
-        <option value="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
+        <option value="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/data/TickerManager.java" />
         <option value="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
       </list>
@@ -260,8 +192,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -450,6 +380,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -465,11 +397,11 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.DataDownloaderTest.checkSignalsRsiForAll">
+  <component name="RunManager" selected="JUnit.DataDownloaderTest">
     <configuration default="false" name="DataDownloaderTest.checkSignalsWIG20" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="Stooq" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -564,6 +496,28 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="DataDownloaderTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Stooq" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.data" />
+      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -584,6 +538,24 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -612,24 +584,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -681,11 +635,12 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsWIG20" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.calcRsi" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsRsi" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsRsiForAll" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -721,7 +676,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1483" height="916" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -730,13 +685,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22496474" sideWeight="0.7120211" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28797886" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19605078" sideWeight="0.65521795" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5997358" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41215324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -825,9 +780,24 @@
         <state line="2" column="12" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/Signal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="49" selection-start="1431" selection-end="1431" vertical-scroll-proportion="0.0" />
+        <state line="12" column="63" selection-start="277" selection-end="281" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="12" selection-start="228" selection-end="236" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="41" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="37" selection-start="5285" selection-end="5296" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloader.java">
@@ -835,66 +805,48 @@
         <state line="6" column="17" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="28" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1947#1955#0" expanded="true" />
-          </folding>
+        <state line="58" column="33" selection-start="1679" selection-end="1679" vertical-scroll-proportion="1.5916334">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="37" selection-start="5285" selection-end="5296" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="57" selection-start="741" selection-end="767" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/Signal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="63" selection-start="277" selection-end="281" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="228" selection-end="236" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="41" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.05027933">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="0" selection-start="7487" selection-end="7487" vertical-scroll-proportion="0.0" />
+        <state line="228" column="0" selection-start="7487" selection-end="7487" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="16" selection-start="1087" selection-end="1092" vertical-scroll-proportion="0.8197065">
+        <state line="40" column="94" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="45" selection-start="2224" selection-end="2224" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="36" selection-start="2016" selection-end="2016" vertical-scroll-proportion="-0.557971">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2398#2406#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

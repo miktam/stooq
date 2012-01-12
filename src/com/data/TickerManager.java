@@ -15,29 +15,27 @@ import com.data.ticker.Ticker;
 
 public class TickerManager {
 
-	private static TickerManager INSTANCE = new TickerManager();
+    private static TickerManager INSTANCE = new TickerManager();
 
-	private static final Logger logger = Logger.getLogger(TickerManager.class);
+    private static final Logger logger = Logger.getLogger(TickerManager.class);
 
-	private List<Ticker> tickers = new ArrayList<Ticker>();
-	private static Map<String, Ticker> nameTickerMap = new HashMap<String, Ticker>();
+    private List<Ticker> tickers = new ArrayList<Ticker>();
+    private static Map<String, Ticker> nameTickerMap = new HashMap<String, Ticker>();
 
-	public static Ticker getTickerFor(String name) {
-		return nameTickerMap.get(name);
-	}
+    public static Ticker getTickerFor(String name) {
+        return nameTickerMap.get(name);
+    }
 
-    public static List<Signal> getSignalsBasedOnRsiForAll(List<Ticker> tickers, int days) {
+    public static List<Signal> getSignalsOnRsi(List<Ticker> tickers, int days) {
 
         List<Signal> signals = new ArrayList<Signal>();
 
         for (Ticker ticker : tickers) {
             logger.trace("TA: check " + ticker);
-            
+
             try {
                 ticker.taRSI();
-            }
-            catch (java.lang.IndexOutOfBoundsException e)
-            {
+            } catch (java.lang.IndexOutOfBoundsException e) {
                 logger.trace(ticker + " " + e);
                 continue;
             }
@@ -60,17 +58,27 @@ public class TickerManager {
         return signals;
     }
 
-    public static List<Signal> getSignalsBasedOnRsiFor(List<String> tickersName) throws Exception {
+    public static List<Signal> getSignalsOnSMA(List<Ticker> tickers, int days) throws Exception {
         List<Signal> signals = new ArrayList<Signal>();
-        int days = 14;
 
-        for (String ticker : tickersName) {
+        for (Ticker t : tickers) {
+            logger.trace("TA: check " + t.ticker);
 
-            Ticker t = getTickerFor(ticker);
-            logger.info("TA: check " + ticker + "=" + t.ticker);
+            List<EntryDayTicker> last = null;
 
-            t.taRSI();
-            List<EntryDayTicker> last = t.getLast(days);
+            try {
+
+                t.taSMA(SMA.SMA15);
+                t.taSMA(SMA.SMA30);
+                t.taSMA(SMA.SMA45);
+
+                last = t.getLast(days + 1);
+
+            } catch (IndexOutOfBoundsException e) {
+
+                logger.trace(e);
+                continue;
+            }
 
             EntryDayTicker yesterdayEntry = null;
 
@@ -78,68 +86,35 @@ public class TickerManager {
                 if (yesterdayEntry == null)
                     yesterdayEntry = entry;
                 else {
-                    Signal s = SignalGenerator.checkRSI(t, yesterdayEntry, entry);
+                    Signal s = SignalGenerator.checkSMA(t, yesterdayEntry, entry);
                     if (s != null)
                         signals.add(s);
                     yesterdayEntry = entry;
                 }
+
             }
         }
 
         return signals;
+
     }
 
-	public static List<Signal> getSignalsBasedOnSMAFor(List<String> tickersName, int days) throws Exception {
-		List<Signal> signals = new ArrayList<Signal>();
+    private TickerManager() {
+    }
 
-		for (String ticker : tickersName) {
+    ;
 
-			Ticker t = getTickerFor(ticker);
-			logger.info("TA: check " + ticker + "=" + t.ticker);
+    public static TickerManager ins() {
+        return INSTANCE;
+    }
 
-			t.taSMA(SMA.SMA15);
-			t.taSMA(SMA.SMA30);
-			t.taSMA(SMA.SMA45);
+    public void loadTickers(List<Ticker> ti) {
+        tickers = ti;
 
-			List<EntryDayTicker> last = t.getLast(days + 1);
-
-			EntryDayTicker yesterdayEntry = null;
-
-			for (EntryDayTicker entry : last) {
-				if (yesterdayEntry == null)
-					yesterdayEntry = entry;
-				else {
-					Signal s = SignalGenerator.checkSMA(t, yesterdayEntry, entry);
-					if (s != null)
-						signals.add(s);
-					yesterdayEntry = entry;
-				}
-
-			}
-		}
-
-		return signals;
-
-	}
-
-	public Map<String, Ticker> getNameTickerMap() {
-		return nameTickerMap;
-	}
-
-	private TickerManager() {
-	};
-
-	public static TickerManager ins() {
-		return INSTANCE;
-	}
-
-	public void loadTickers(List<Ticker> ti) {
-		tickers = ti;
-
-		for (Ticker t : tickers) {
-			nameTickerMap.put(t.ticker, t);
-		}
-	}
+        for (Ticker t : tickers) {
+            nameTickerMap.put(t.ticker, t);
+        }
+    }
 
 
 }
