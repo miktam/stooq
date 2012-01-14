@@ -22,6 +22,6 @@ public enum SignalEnum {
     S_RSI_70, S_RSI_80,
     S_RSI_30_CHANGED_TREND,
     S_RSI_80_CHANGED_TREND,
-    S_RSI_70_CHANGED_TREND;
+    S_RSI_70_CHANGED_TREND, B_OR_S_VOLUME;
 
 }

@@ -117,4 +117,27 @@ public class TickerManager {
     }
 
 
+    public static List<Signal> getSignalsOnVolume(List<Ticker> tickers, int days) {
+
+        List<Signal> signals = new ArrayList<Signal>();
+
+        for (Ticker ticker : tickers) {
+            logger.trace("TA: check " + ticker);
+
+            try {
+
+                List<EntryDayTicker> last = ticker.getLast(days);
+            } catch (IndexOutOfBoundsException e) {
+                logger.trace(e);
+                continue;
+            }
+
+            Signal s = SignalGenerator.checkVolume(ticker, days);
+
+            if (s != null)
+                signals.add(s);
+        }
+
+        return signals;
+    }
 }

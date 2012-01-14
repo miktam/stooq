@@ -62,29 +62,58 @@ public class DataDownloaderTest {
     }
 
     @Test
+    public void checkSignalsVolumeIncreaseForAll() throws Exception {
+
+        List<Signal> interesting = TickerManager.getSignalsOnVolume(tickers, 3);
+        displaySignals(interesting);
+    }
+
+
+    @Test
     public void checkSignalsRsiForAll() throws Exception {
 
         List<Signal> interesting = TickerManager.getSignalsOnRsi(tickers, 4);
-
         displaySignals(interesting);
-
     }
 
 
     @Test
     public void checkSignalsWIG30BasedOnSMA() throws Exception {
-        List<Signal> interesting = TickerManager.getSignalsOnSMA(tickers, 100);
+        List<Signal> interesting = TickerManager.getSignalsOnSMA(tickers, 4);
         displaySignals(interesting);
     }
 
 
     private void displaySignals(List<Signal> interesting) {
+        List<Signal> composites = extractCompositeEntries(interesting);
+        logger.info("COMPOSITES");
+        listSignals(composites);
+        interesting.removeAll(composites);
+        
+        logger.info("BUY");
         List<Signal> tobuy = extractBuySignals(interesting);
         listSignals(tobuy);
+
         interesting.removeAll(tobuy);
         logger.info("TO SELL");
         listSignals(interesting);
     }
+
+    /**
+     * for WIG * and Futures composites
+     * @param interesting
+     * @return
+     */
+    private List<Signal> extractCompositeEntries(List<Signal> interesting) {
+        List<Signal> composite = new ArrayList<Signal>();
+        for (Signal i : interesting) {
+            if (i.ticker.ticker.startsWith("WIG") ||i.ticker.ticker.startsWith("FW") || i.ticker.ticker.contains("WIG")
+                    || i.ticker.ticker.contains("RESPECT")  || i.ticker.ticker.contains("INVESTORMS"))
+                composite.add(i);
+        }
+        return composite;
+    }
+
 
     private List<Signal> extractBuySignals(List<Signal> interesting) {
         List<Signal> tobuy = new ArrayList<Signal>();
@@ -97,7 +126,7 @@ public class DataDownloaderTest {
 
     private void listSignals(List<Signal> s) {
 
-        logger.info("unsorted list: " + s);
+        logger.trace("unsorted list: " + s);
 
         int LIMIT = 50000;
         logger.info("show sorted Signals (by volume) for volume (obroty) > " + LIMIT);
