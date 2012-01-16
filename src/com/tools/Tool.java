@@ -31,6 +31,10 @@ public class Tool {
 		return  DateTimeFormat.forPattern("dd-MM-yyyy");
 	}
 	
+	/**
+	 * Date.toString(Tool.dm())
+	 * @return date format: dd-mm
+	 */
 	public static DateTimeFormatter dm()
 	{
 		return  DateTimeFormat.forPattern("dd-MM");
@@ -43,6 +47,15 @@ public class Tool {
 	public static DecimalFormat df()
 	{
 		return new DecimalFormat("##.##");
+	}
+
+	
+	/**
+	 * Date.toString(Tool.dm())
+	 * @return date format: dd
+	 */
+	public static DateTimeFormatter d() {
+		return  DateTimeFormat.forPattern("dd");
 	}
 
 }

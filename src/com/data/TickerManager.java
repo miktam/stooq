@@ -71,6 +71,7 @@ public class TickerManager {
                 t.taSMA(SMA.SMA15);
                 t.taSMA(SMA.SMA30);
                 t.taSMA(SMA.SMA45);
+                t.taSMA(SMA.SMA200);
 
                 last = t.getLast(days + 1);
 

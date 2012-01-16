@@ -23,6 +23,7 @@ public class SignalGenerator {
                 add(SMA.SMA15);
                 add(SMA.SMA30);
                 add(SMA.SMA45);
+                add(SMA.SMA200);
             }
         };
 
@@ -145,7 +146,7 @@ public class SignalGenerator {
 
         if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE) {
             s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME);
-            logger.info(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
+            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
         }
 
         return s;  //To change body of created methods use File | Settings | File Templates.

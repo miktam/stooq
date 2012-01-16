@@ -85,7 +85,7 @@ public class Ticker {
      * First Average Loss = Total of Losses during past 14 periods / 14
      */
     public void taRSI() {
-        int lookback = 80;
+        int lookback = 220;
         int period = 14;
         
         logger.trace("count gain/losses for more than lookback");

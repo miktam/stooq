@@ -10,142 +10,178 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.data.ta.Signal;
+import com.data.ticker.EntryDayTicker;
 import com.data.ticker.Ticker;
 import com.tools.Tool;
 
 public class DataDownloaderTest {
 
-    private final static Logger logger = Logger.getLogger(DataDownloaderTest.class);
+	private final static Logger logger = Logger.getLogger(DataDownloaderTest.class);
 
-    static DataDownloader dd;
-    static List<String> wig30tickersList;
-    static List<Ticker> tickers;
+	static DataDownloader dd;
+	static List<String> wig30tickersList;
+	static List<Ticker> tickers;
 
-    @BeforeClass
-    public static void beforeClass() throws Exception {
-        wig30tickersList = new ArrayList<String>() {
-            {
-                add("ASSECOPOL");
-                add("HANDLOWY");
-                add("BRE");
-                add("GTC");
-                add("GETIN");
-                add("JSW");
-                add("KERNEL");
-                add("KGHM");
-                add("LOTOS");
-                add("BOGDANKA");
-                add("PBG");
-                add("PEKAO");
-                add("PGE");
-                add("PGNIG");
-                add("PKNORLEN");
-                add("PKOBP");
-                add("PZU");
-                add("TAURONPE");
-                add("TPSA");
-                add("TVN");
+	@Test
+	public void checkAllSignals() throws Exception {
 
-                add("PETROLINV");
-                add("HAWE");
-                add("BORYSZEW");
-                add("PEP");
-                add("POLIMEXMS");
-                add("CYFRPLSAT");
-                add("CIECH");
-                add("SYNTHOS");
-            }
-        };
+		List<Signal> totalSignals = new ArrayList<Signal>();
 
-        dd = new DataDownloaderImpl();
-        tickers = dd.downloadData();
-    }
+		totalSignals.addAll(TickerManager.getSignalsOnVolume(tickers, 3));
+		totalSignals.addAll(TickerManager.getSignalsOnRsi(tickers, 4));
+		totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 2));
 
-    @Test
-    public void checkSignalsVolumeIncreaseForAll() throws Exception {
+		totalSignals.removeAll(extractCompositeEntries(totalSignals));
+		
+		displaySignals(totalSignals);
+	}
 
-        List<Signal> interesting = TickerManager.getSignalsOnVolume(tickers, 3);
-        displaySignals(interesting);
-    }
+	@Test
+	public void checkSignalsVolumeIncreaseForAll() throws Exception {
+		List<Signal> interesting = TickerManager.getSignalsOnVolume(tickers, 3);
+		displaySignals(interesting);
+	}
 
+	@Test
+	public void checkSignalsRsiForAll() throws Exception {
+		List<Signal> interesting = TickerManager.getSignalsOnRsi(tickers, 4);
+		displaySignals(interesting);
+	}
 
-    @Test
-    public void checkSignalsRsiForAll() throws Exception {
+	@Test
+	public void checkSignalsSMA() throws Exception {
+		List<Signal> interesting = TickerManager.getSignalsOnSMA(tickers, 2);
+		displaySignals(interesting);
+	}
 
-        List<Signal> interesting = TickerManager.getSignalsOnRsi(tickers, 4);
-        displaySignals(interesting);
-    }
+	private static void displaySignals(List<Signal> interesting) {
+		List<Signal> composites = extractCompositeEntries(interesting);
+		logger.info("COMPOSITES");
+		listSignals(composites);
+		interesting.removeAll(composites);
 
+		logger.info("BUY");
+		List<Signal> tobuy = extractBuySignals(interesting);
+		listSignals(tobuy);
 
-    @Test
-    public void checkSignalsWIG30BasedOnSMA() throws Exception {
-        List<Signal> interesting = TickerManager.getSignalsOnSMA(tickers, 4);
-        displaySignals(interesting);
-    }
+		interesting.removeAll(tobuy);
+		logger.info("TO SELL");
+		listSignals(interesting);
+	}
 
+	/**
+	 * for WIG * and Futures composites
+	 * 
+	 * @param interesting
+	 * @return
+	 */
+	private static List<Signal> extractCompositeEntries(List<Signal> interesting) {
+		List<Signal> composite = new ArrayList<Signal>();
+		for (Signal i : interesting) {
+			if (i.ticker.ticker.startsWith("WIG") || i.ticker.ticker.startsWith("FW")
+					|| i.ticker.ticker.contains("WIG") || i.ticker.ticker.contains("RESPECT")
+					|| i.ticker.ticker.contains("INVESTORMS"))
+				composite.add(i);
+		}
+		return composite;
+	}
 
-    private void displaySignals(List<Signal> interesting) {
-        List<Signal> composites = extractCompositeEntries(interesting);
-        logger.info("COMPOSITES");
-        listSignals(composites);
-        interesting.removeAll(composites);
-        
-        logger.info("BUY");
-        List<Signal> tobuy = extractBuySignals(interesting);
-        listSignals(tobuy);
+	private static List<Signal> extractBuySignals(List<Signal> interesting) {
+		List<Signal> tobuy = new ArrayList<Signal>();
+		for (Signal i : interesting) {
+			if (i.type.name().startsWith("B"))
+				tobuy.add(i);
+		}
+		return tobuy;
+	}
 
-        interesting.removeAll(tobuy);
-        logger.info("TO SELL");
-        listSignals(interesting);
-    }
+	private static void listSignals(List<Signal> s) {
 
-    /**
-     * for WIG * and Futures composites
-     * @param interesting
-     * @return
-     */
-    private List<Signal> extractCompositeEntries(List<Signal> interesting) {
-        List<Signal> composite = new ArrayList<Signal>();
-        for (Signal i : interesting) {
-            if (i.ticker.ticker.startsWith("WIG") ||i.ticker.ticker.startsWith("FW") || i.ticker.ticker.contains("WIG")
-                    || i.ticker.ticker.contains("RESPECT")  || i.ticker.ticker.contains("INVESTORMS"))
-                composite.add(i);
-        }
-        return composite;
-    }
+		logger.trace("unsorted list: " + s);
 
+		// sort signals by tickers
 
-    private List<Signal> extractBuySignals(List<Signal> interesting) {
-        List<Signal> tobuy = new ArrayList<Signal>();
-        for (Signal i : interesting) {
-            if (i.type.name().startsWith("B"))
-                tobuy.add(i);
-        }
-        return tobuy;
-    }
+		int LIMIT = 250000;
+		logger.info("show sorted Signals (by volume) for volume (obroty) > " + LIMIT);		
 
-    private void listSignals(List<Signal> s) {
+		Collections.sort(s, new ComapatorBasedOnTickerName());
+		Collections.sort(s, new ComapatorBasedOnVolume());
 
-        logger.trace("unsorted list: " + s);
+		for (Signal sig : s) {
 
-        int LIMIT = 50000;
-        logger.info("show sorted Signals (by volume) for volume (obroty) > " + LIMIT);
+			double obroty = (sig.ticker.getLast(1)).get(0).close * (sig.ticker.getLast(1)).get(0).vol;
 
-        Collections.sort(s, new Comparator<Signal>() {
-            @Override
-            public int compare(Signal o1, Signal o2) {
-                double vol1 = o1.ticker.getLast(1).get(0).close * (o1.ticker.getLast(1)).get(0).vol;
-                double vol2 = o2.ticker.getLast(1).get(0).close * (o2.ticker.getLast(1)).get(0).vol;
-                return (int) (vol2 - vol1);
-            }
-        });
+			if (obroty > LIMIT)
+				logger.warn(sig + ", obroty=" + Tool.df().format(obroty) + " " + getLastPrices(sig.ticker.getLast(5)));
+		}
+	}
+	
+	private static String getLastPrices(List<EntryDayTicker> entries)	
+	{
+		StringBuilder res = new StringBuilder();
+		for (EntryDayTicker e:entries)
+		{
+			//res.append(e.date.toString(Tool.d()) +":" + e.close + ", ");
+			res.append(e.close + ", ");
+		}
+		
+		return res.toString().substring(0, res.length() -2);
+	}
 
-        for (Signal sig : s) {
+	static class ComapatorBasedOnVolume implements Comparator<Signal> {
+		@Override
+		public int compare(Signal o1, Signal o2) {
+			double vol1 = o1.ticker.getLast(1).get(0).close * (o1.ticker.getLast(1)).get(0).vol;
+			double vol2 = o2.ticker.getLast(1).get(0).close * (o2.ticker.getLast(1)).get(0).vol;
+			return (int) (vol2 - vol1);
+		}
+	}
 
-            double obroty = (sig.ticker.getLast(1)).get(0).close * (sig.ticker.getLast(1)).get(0).vol;
+	static class ComapatorBasedOnTickerName implements Comparator<Signal> {
+		@Override
+		public int compare(Signal o1, Signal o2) {
+			return o1.ticker.ticker.compareTo(o2.ticker.ticker);
+		}
+	}
+	
+	@BeforeClass
+	public static void beforeClass() throws Exception {
+		wig30tickersList = new ArrayList<String>() {
+			{
+				add("ASSECOPOL");
+				add("HANDLOWY");
+				add("BRE");
+				add("GTC");
+				add("GETIN");
+				add("JSW");
+				add("KERNEL");
+				add("KGHM");
+				add("LOTOS");
+				add("BOGDANKA");
+				add("PBG");
+				add("PEKAO");
+				add("PGE");
+				add("PGNIG");
+				add("PKNORLEN");
+				add("PKOBP");
+				add("PZU");
+				add("TAURONPE");
+				add("TPSA");
+				add("TVN");
 
-            if (obroty > LIMIT)
-                logger.warn(sig + ", obroty=" + Tool.df().format(obroty));
-        }
-    }
+				add("PETROLINV");
+				add("HAWE");
+				add("BORYSZEW");
+				add("PEP");
+				add("POLIMEXMS");
+				add("CYFRPLSAT");
+				add("CIECH");
+				add("SYNTHOS");
+			}
+		};
+
+		dd = new DataDownloaderImpl();
+		tickers = dd.downloadData();
+	}
+
 }
