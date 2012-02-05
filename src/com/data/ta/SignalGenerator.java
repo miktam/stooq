@@ -142,14 +142,14 @@ public class SignalGenerator {
         double avgOldVolume = oldVolume / oldDaysCounter;
         double avgCurrentVolume = currentVolume / currentDaysCounter;
 
-        logger.trace("old volume average:" + Tool.df().format(avgOldVolume) + " volume now:" + avgCurrentVolume);
+        logger.trace("old volume average:" + Tool.p_s(avgOldVolume) + " volume now:" + avgCurrentVolume);
 
         if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE_TEN) {
-            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME_10);
-            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
+            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOL_10);
+            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + avgCurrentVolume/avgOldVolume);
         } else if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE_FIVE) {
-            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME_5);
-            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
+            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOL_5);
+            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + avgCurrentVolume/avgOldVolume);
         }
 
 

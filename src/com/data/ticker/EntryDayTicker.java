@@ -24,7 +24,7 @@ public class EntryDayTicker {
     public String toString() {
         return "Ticker [name=" + name + ", date=" + date.toString(Tool.dmy())
                 + ", open=" + open + ", high=" + high + ", low=" + low
-                + ", close=" + close + ", vol=" + vol + (gain>0?(", gain=" +  Tool.df().format(gain)):"") + (loss>0?(" ,loss=" + Tool.df().format(loss)):"") + ", rsi=" + RSI +"]";
+                + ", close=" + close + ", vol=" + vol + (gain>0?(", gain=" +  Tool.p_s(gain)):"") + (loss>0?(" ,loss=" + Tool.p_s(loss)):"") + ", rsi=" + RSI +"]";
     }
 
     public final String name;

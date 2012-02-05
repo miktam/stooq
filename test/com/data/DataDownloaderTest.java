@@ -38,6 +38,21 @@ public class DataDownloaderTest {
 	}
 
     @Test
+    public void testDoublePrinting()
+    {
+        double price = 15.3498;
+        double bigVolume = 313131313.1232;
+        
+        String pricePrinted = Tool.p(bigVolume);
+        logger.info(bigVolume + " nicer " + pricePrinted);
+
+        logger.info(price + " nicer " + Tool.p(price));
+
+        logger.info(1000000 + " nicer " + Tool.p(1000000.23));
+        logger.info(100000 + " nicer " + Tool.p(100000.23));
+    }
+
+    @Test
     public void checkSignalsSTS() throws Exception {
         //List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
         //displaySignals(interesting);
@@ -120,7 +135,7 @@ public class DataDownloaderTest {
 		// sort signals by tickers
 
 		int LIMIT = 500000;
-		logger.info("show sorted Signals (by volume) for volume (obroty) > " + LIMIT);		
+		logger.info("show sorted Signals (by volume) for volume (obroty) > " + Tool.p(LIMIT));
 
 		Collections.sort(s, new ComapatorBasedOnTickerName());
 		Collections.sort(s, new ComapatorBasedOnVolume());
@@ -130,7 +145,7 @@ public class DataDownloaderTest {
 			double obroty = (sig.ticker.getLast(1)).get(0).close * (sig.ticker.getLast(1)).get(0).vol;
 
 			if (obroty > LIMIT)
-				logger.warn(sig + ", obroty=" + Tool.dfBig().format(obroty) + " " + getLastPrices(sig.ticker.getLast(5)));
+				logger.warn(sig + ", obroty=" + Tool.p(obroty) + "\t" + getLastPrices(sig.ticker.getLast(5)));
 		}
 	}
 	
@@ -139,7 +154,6 @@ public class DataDownloaderTest {
 		StringBuilder res = new StringBuilder();
 		for (EntryDayTicker e:entries)
 		{
-			//res.append(e.date.toString(Tool.d()) +":" + e.close + ", ");
 			res.append(e.close + ", ");
 		}
 		
