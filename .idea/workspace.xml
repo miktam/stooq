@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ce1bb52-6f2e-4f43-a70b-b7fce257f0d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" afterPath="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" afterPath="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tools/Tool.java" afterPath="$PROJECT_DIR$/src/com/tools/Tool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" afterPath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
     </list>
     <ignored path="Stooq.iws" />
@@ -27,7 +22,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="156" class="com.data.ticker.Ticker" package="com.data.ticker">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="163" class="com.data.ticker.Ticker" package="com.data.ticker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -40,7 +35,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="131" class="com.data.ticker.Ticker" package="com.data.ticker">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="138" class="com.data.ticker.Ticker" package="com.data.ticker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -53,7 +48,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="243" class="com.data.ticker.Ticker" package="com.data.ticker">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="250" class="com.data.ticker.Ticker" package="com.data.ticker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -80,6 +75,19 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" line="31" class="com.data.DataDownloaderTest" package="com.data">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java" line="25" class="com.data.parser.FileParser" package="com.data.parser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -136,7 +144,34 @@
       <file leaf-file-name="DataDownloaderTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="50" selection-start="804" selection-end="804" vertical-scroll-proportion="-4.8076925">
+            <state line="217" column="27" selection-start="5761" selection-end="5761" vertical-scroll-proportion="-13.192307">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataDownloader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="17" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataDownloaderImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="46" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileParser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="33" selection-start="436" selection-end="436" vertical-scroll-proportion="0.28484848">
               <folding />
             </state>
           </provider>
@@ -145,7 +180,7 @@
       <file leaf-file-name="TickerManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0">
+            <state line="155" column="40" selection-start="4115" selection-end="4115" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#860#868#0" expanded="true" />
                 <element signature="e#3243#3251#0" expanded="true" />
@@ -157,81 +192,15 @@
       <file leaf-file-name="Ticker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="254" column="39" selection-start="8357" selection-end="8357" vertical-scroll-proportion="0.0">
+            <state line="13" column="50" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#515#541#0" expanded="true" />
                 <element signature="e#599#615#0" expanded="true" />
-                <element signature="e#2814#2830#0" expanded="true" />
-                <element signature="e#3252#3268#0" expanded="true" />
-                <element signature="e#7959#7975#0" expanded="true" />
+                <element signature="e#3088#3104#0" expanded="true" />
+                <element signature="e#3526#3542#0" expanded="true" />
+                <element signature="e#8233#8249#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tool.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="26" selection-start="1364" selection-end="1364" vertical-scroll-proportion="2.65625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntryDayTicker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="46" selection-start="333" selection-end="333" vertical-scroll-proportion="-1.4615384">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1792#1805#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignalGenerator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="25" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Matcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.6.0_30/src.zip!/java/util/regex/Matcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="0" selection-start="8092" selection-end="8092" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pattern.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.6.0_30/src.zip!/java/util/regex/Pattern.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3054" column="0" selection-start="108727" selection-end="108727" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReflectiveCallable.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="40" selection-start="397" selection-end="397" vertical-scroll-proportion="-6.8">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DateTimeParserBucket.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/joda-time-2.0.jar!/org/joda/time/format/DateTimeParserBucket.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="16" selection-start="2239" selection-end="2239" vertical-scroll-proportion="-1.4">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -254,11 +223,11 @@
         <option value="$PROJECT_DIR$/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/com/data/ta/SMA.java" />
         <option value="$PROJECT_DIR$/src/com/data/TickerManager.java" />
-        <option value="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
         <option value="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
         <option value="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/tools/Tool.java" />
         <option value="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" />
+        <option value="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
         <option value="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
       </list>
     </option>
@@ -630,7 +599,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1483" height="916" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -645,9 +614,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17912553" sideWeight="0.5297226" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.079689704" sideWeight="0.5297226" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4702774" sideWeight="0.9992642" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17912553" sideWeight="0.47159842" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.079689704" sideWeight="0.47159842" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5284016" sideWeight="0.9992642" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -709,13 +678,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="32" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/joda-time-2.0.jar!/org/joda/time/tz/DateTimeZoneBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="221" column="60" selection-start="10992" selection-end="10992" vertical-scroll-proportion="0.41954023">
@@ -723,23 +685,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/joda-time-2.0.jar!/org/joda/time/chrono/BasicMonthOfYearDateTimeField.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="16" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-4.68">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -772,40 +720,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_30/src.zip!/java/util/regex/Pattern.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3054" column="0" selection-start="108727" selection-end="108727" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="25" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0">
+        <state line="8" column="17" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="50" selection-start="804" selection-end="804" vertical-scroll-proportion="-4.8076925">
+        <state line="217" column="27" selection-start="5761" selection-end="5761" vertical-scroll-proportion="-13.192307">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_30/src.zip!/java/util/regex/Pattern.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#860#868#0" expanded="true" />
-            <element signature="e#3243#3251#0" expanded="true" />
-          </folding>
+        <state line="3054" column="0" selection-start="108727" selection-end="108727" vertical-scroll-proportion="0.10786517">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="25" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.39775282">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="46" selection-start="333" selection-end="333" vertical-scroll-proportion="-1.4615384">
+        <state line="13" column="46" selection-start="333" selection-end="333" vertical-scroll-proportion="0.2">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1792#1805#0" expanded="true" />
@@ -813,23 +758,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="26" selection-start="1364" selection-end="1364" vertical-scroll-proportion="2.0021412">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="254" column="39" selection-start="8357" selection-end="8357" vertical-scroll-proportion="0.0">
+        <state line="13" column="50" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#515#541#0" expanded="true" />
             <element signature="e#599#615#0" expanded="true" />
-            <element signature="e#2814#2830#0" expanded="true" />
-            <element signature="e#3252#3268#0" expanded="true" />
-            <element signature="e#7959#7975#0" expanded="true" />
+            <element signature="e#3088#3104#0" expanded="true" />
+            <element signature="e#3526#3542#0" expanded="true" />
+            <element signature="e#8233#8249#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tools/Tool.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="26" selection-start="1364" selection-end="1364" vertical-scroll-proportion="2.65625">
+        <state line="155" column="40" selection-start="4115" selection-end="4115" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#860#868#0" expanded="true" />
+            <element signature="e#3243#3251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="46" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/parser/FileParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="33" selection-start="436" selection-end="436" vertical-scroll-proportion="0.28484848">
           <folding />
         </state>
       </provider>

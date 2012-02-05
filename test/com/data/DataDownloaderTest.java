@@ -178,6 +178,8 @@ public class DataDownloaderTest {
 	
 	@BeforeClass
 	public static void beforeClass() throws Exception {
+        
+        Thread.sleep(5000);
 		wig30tickersList = new ArrayList<String>() {
 			{
 				add("ASSECOPOL");

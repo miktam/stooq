@@ -66,11 +66,18 @@ public class Ticker {
 
             while (s.hasNextLine()) {
                 String line = s.nextLine();
-                logger.trace(line);
-                EntryDayTicker e = new EntryDayTicker(line);
-                map.put(e.date, e);
+                
+                // skip all except 201+
+                String[] date = line.split(",");
+                boolean notNeedToCheck = false;
+                if (notNeedToCheck || date[1].startsWith("201"))
+                {
+                    EntryDayTicker e = new EntryDayTicker(line);
+                    map.put(e.date, e);
+                    list.add(e);
 
-                list.add(e);
+                    notNeedToCheck = true;
+                }
             }
 
         } catch (FileNotFoundException e) {
