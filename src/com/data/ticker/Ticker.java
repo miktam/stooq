@@ -174,13 +174,7 @@ public class Ticker {
         int days = sma.value();
 
         logger.trace("start counting sma for " + ticker);
-        EntryDayTicker[] lastEntries = new EntryDayTicker[days * 2];
-        Object[] rawEdt = getList().subList(getList().size() - days * 2,
-                getList().size()).toArray();
-
-        for (int i = 0; i < rawEdt.length; i++) {
-            lastEntries[i] = (EntryDayTicker) rawEdt[i];
-        }
+        EntryDayTicker[] lastEntries = edt2Array(days*2);
 
         for (int i = days; i < days * 2; i++) {
             // collect appropriate amount of previous values
@@ -199,11 +193,6 @@ public class Ticker {
         }
 
         logger.trace(sma + " for " + ticker + ": " + sb);
-    }
-
-    @Override
-    public String toString() {
-        return ticker;
     }
 
     public String toString(int lastCloses) {
@@ -230,4 +219,85 @@ public class Ticker {
                 listSize);
     }
 
+	public void taAD(int days) {
+		logger.trace("calculate Money Flow Multiplier");
+		
+		double moneyFlowMult = 0;
+		double moneyFlowValue = 0;
+		double previousAD = 0;
+		
+		List<EntryDayTicker> lastEdt = getLast(days*2);
+		for (EntryDayTicker e : lastEdt) {
+			//Money Flow Multiplier = [(Close  -  Low) - (High - Close)] /(High - Low)
+            moneyFlowMult = ((e.close-e.low) - (e.high - e.close)) / (e.high - e.low);
+			moneyFlowValue = moneyFlowMult * e.vol;
+			previousAD = moneyFlowValue + previousAD;
+			e.setAD(previousAD);
+			
+			logger.info(e.date.toString(Tool.d()) + ":" + e.getAD() + " " + Tool.df().format(e.close));
+		}
+	}
+
+    public void taSTS() {
+        List<EntryDayTicker> last = new LinkedList<EntryDayTicker>(getLast(30));
+        ListIterator<EntryDayTicker> it = last.listIterator(14);
+
+        while (it.hasNext())
+        {
+            
+            logger.info("index:" + it.nextIndex());
+
+
+            // get max for last 14
+            ListIterator<EntryDayTicker> goBack = it;
+            double max = 0;
+            double min = 0;
+
+            int counter = 14;
+            while (goBack.hasPrevious() && counter > 0)
+            {
+                EntryDayTicker t = goBack.previous();
+                if (t.close > max)
+                    max = t.close;
+                if (t.close < min)
+                    min = t.close;
+
+                counter--;
+                
+                logger.info(goBack.previousIndex());
+            }
+
+            EntryDayTicker next = it.next();
+
+            logger.info(next.date.toString(Tool.d()) + " max = " + Tool.df().format(max) + ", min = " + Tool.df().format(min));
+
+            
+            // get min for last 14
+
+        }
+
+
+
+    }
+
+    /**
+     * get array of ADT for given amount of days
+     * @param days
+     * @return
+     */
+    private EntryDayTicker[] edt2Array(int days) {
+        EntryDayTicker[] lastEntries = new EntryDayTicker[days];
+        Object[] rawEdt = getList().subList(getList().size() - days,
+                getList().size()).toArray();
+
+        for (int i = 0; i < rawEdt.length; i++) {
+            lastEntries[i] = (EntryDayTicker) rawEdt[i];
+        }
+        return lastEntries;
+    }
+
+    @Override
+    public String toString() {
+        return ticker;
+    }
 }

@@ -4,8 +4,11 @@
     <list default="true" id="2ce1bb52-6f2e-4f43-a70b-b7fce257f0d0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/TickerManager.java" afterPath="$PROJECT_DIR$/src/com/data/TickerManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SMA.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SMA.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" afterPath="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" afterPath="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" afterPath="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tools/Tool.java" afterPath="$PROJECT_DIR$/src/com/tools/Tool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" afterPath="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
     </list>
     <ignored path="Stooq.iws" />
@@ -39,6 +42,19 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="131" class="com.data.ticker.Ticker" package="com.data.ticker">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java" line="244" class="com.data.ticker.Ticker" package="com.data.ticker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -92,25 +108,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataDownloaderTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataDownloaderTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.28455284">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#606#614#0" expanded="true" />
-                <element signature="class#723:1638" expanded="false" />
-                <element signature="e#3380#3388#0" expanded="true" />
-                <element signature="e#3852#3860#0" expanded="true" />
-              </folding>
+            <state line="30" column="52" selection-start="737" selection-end="737" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SMA.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ta/SMA.java">
+      <file leaf-file-name="TickerManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="43" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
+            <state line="135" column="44" selection-start="3601" selection-end="3601" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignalGenerator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="35" selection-start="3662" selection-end="3662" vertical-scroll-proportion="-0.5869191">
               <folding />
             </state>
           </provider>
@@ -119,16 +138,7 @@
       <file leaf-file-name="SignalEnum.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="12" selection-start="228" selection-end="236" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Hierarchy.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/org/apache/log4j/Hierarchy.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="19" selection-start="2451" selection-end="2451" vertical-scroll-proportion="0.0">
+            <state line="26" column="20" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,28 +153,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TickerManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="20" selection-start="2153" selection-end="2153" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignalGenerator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="27" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Ticker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="28" selection-start="5726" selection-end="5731" vertical-scroll-proportion="0.0">
+            <state line="96" column="30" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#taAD#0;class#Ticker#0" expanded="false" />
+                <element signature="e#7966#7982#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Category.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/org/apache/log4j/Category.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="152" column="16" selection-start="6024" selection-end="6024" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -197,12 +201,12 @@
         <option value="$PROJECT_DIR$/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/com/tools/Tool.java" />
         <option value="$PROJECT_DIR$/src/com/data/ticker/EntryDayTicker.java" />
-        <option value="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
-        <option value="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
-        <option value="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
         <option value="$PROJECT_DIR$/src/com/data/ta/SMA.java" />
-        <option value="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/data/TickerManager.java" />
+        <option value="$PROJECT_DIR$/test/com/data/DataDownloaderTest.java" />
+        <option value="$PROJECT_DIR$/src/com/data/ticker/Ticker.java" />
+        <option value="$PROJECT_DIR$/src/com/data/ta/SignalEnum.java" />
+        <option value="$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java" />
       </list>
     </option>
   </component>
@@ -212,8 +216,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1163" />
-    <option name="height" value="1040" />
+    <option name="width" value="1483" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -260,6 +264,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,187 +273,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stooq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -460,7 +286,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -470,73 +296,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.DataDownloaderTest.checkSignalsSMA">
-    <configuration default="false" name="DataDownloaderTest.checkSignalsRsiForAll" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="Stooq" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.data" />
-      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
-      <option name="METHOD_NAME" value="checkSignalsRsiForAll" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="DataDownloaderTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="Stooq" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.data" />
-      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="DataDownloaderTest.checkSignalsWIG30BasedOnSMA" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="Stooq" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.data" />
-      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
-      <option name="METHOD_NAME" value="checkSignalsWIG30BasedOnSMA" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.DataDownloaderTest.checkAllSignals">
     <configuration default="false" name="DataDownloaderTest.checkSignalsVolumeIncreaseForAll" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="Stooq" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -584,6 +344,78 @@
       <envs />
       <patterns />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DataDownloaderTest.checkAllSignals" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Stooq" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.data" />
+      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
+      <option name="METHOD_NAME" value="checkAllSignals" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DataDownloaderTest.checkSignalsAD" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Stooq" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.data" />
+      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
+      <option name="METHOD_NAME" value="checkSignalsAD" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DataDownloaderTest.checkSignalsSTS" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="Stooq" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.data" />
+      <option name="MAIN_CLASS_NAME" value="com.data.DataDownloaderTest" />
+      <option name="METHOD_NAME" value="checkSignalsSTS" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -705,11 +537,11 @@
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsRsiForAll" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsWIG30BasedOnSMA" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsVolumeIncreaseForAll" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsSMA" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsVolumeIncreaseForAll" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsSMA" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkAllSignals" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsAD" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DataDownloaderTest.checkSignalsSTS" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -744,8 +576,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1163" height="1040" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1483" height="916" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -754,13 +586,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760897" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32628798" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19398907" sideWeight="0.62883085" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37116912" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17912553" sideWeight="0.8322325" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16776751" sideWeight="0.9992642" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41215324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -854,14 +686,14 @@
         <state line="467" column="0" selection-start="15467" selection-end="15467" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/org/apache/log4j/Category.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="16" selection-start="6024" selection-end="6024" vertical-scroll-proportion="5.729911" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/org/apache/log4j/Hierarchy.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="19" selection-start="2451" selection-end="2451" vertical-scroll-proportion="0.0" />
+        <state line="54" column="19" selection-start="2451" selection-end="2451" vertical-scroll-proportion="0.04" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SMA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="43" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/DataDownloaderImpl.java">
@@ -869,54 +701,51 @@
         <state line="119" column="4" selection-start="3331" selection-end="3331" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/org/apache/log4j/Category.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="16" selection-start="6024" selection-end="6024" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/ta/Signal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="11" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="228" selection-end="236" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SMA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="43" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="96" column="30" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#taAD#0;class#Ticker#0" expanded="false" />
+            <element signature="e#7966#7982#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="27" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0">
+        <state line="26" column="20" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/data/TickerManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="20" selection-start="2153" selection-end="2153" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/data/ticker/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="28" selection-start="5726" selection-end="5731" vertical-scroll-proportion="0.0">
+        <state line="135" column="44" selection-start="3601" selection-end="3601" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/data/DataDownloaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.28455284">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#606#614#0" expanded="true" />
-            <element signature="class#723:1638" expanded="false" />
-            <element signature="e#3380#3388#0" expanded="true" />
-            <element signature="e#3852#3860#0" expanded="true" />
-          </folding>
+        <state line="30" column="52" selection-start="737" selection-end="737" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/ta/SignalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="35" selection-start="3662" selection-end="3662" vertical-scroll-proportion="-0.5869191">
+          <folding />
         </state>
       </provider>
     </entry>

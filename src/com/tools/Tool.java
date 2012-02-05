@@ -48,6 +48,17 @@ public class Tool {
 	{
 		return new DecimalFormat("##.##");
 	}
+	
+	/**
+	 * format big numbers
+	 * @return
+	 */
+	public static DecimalFormat dfBig()
+	{
+		DecimalFormat df = new DecimalFormat("##");
+		df.setGroupingSize(3);
+		return df;
+	}
 
 	
 	/**

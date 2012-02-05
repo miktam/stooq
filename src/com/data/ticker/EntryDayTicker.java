@@ -38,6 +38,7 @@ public class EntryDayTicker {
     private double gain = -1;
     private double loss = -1;
     private double RSI = -1;
+	private double ad = 0;
 
     public void setChange(double change) {
         if (change > 0) {
@@ -62,6 +63,8 @@ public class EntryDayTicker {
     }
 
     public Map<SMA, Double> smaMap = new HashMap<SMA, Double>();
+
+
 
     public EntryDayTicker(String entry) {
         super();
@@ -100,4 +103,13 @@ public class EntryDayTicker {
     public double getLoss() {
         return loss;
     }
+
+	public void setAD(double ad) {
+		this.ad = ad;		
+	}
+	
+	public double getAD()
+	{
+		return ad;
+	}
 }

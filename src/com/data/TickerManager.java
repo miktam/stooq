@@ -141,4 +141,29 @@ public class TickerManager {
 
         return signals;
     }
+
+	public static List<Signal> getSignalsOnAD(List<Ticker> tickers, int days) {
+		  List<Signal> signals = new ArrayList<Signal>();
+
+	        for (Ticker ticker : tickers) {
+	            logger.trace("AD: check " + ticker);
+	            
+	            ticker.taAD(20);
+
+	            try {
+
+	                List<EntryDayTicker> last = ticker.getLast(days);
+	            } catch (IndexOutOfBoundsException e) {
+	                logger.trace(e);
+	                continue;
+	            }
+
+	            Signal s = SignalGenerator.checkAD(ticker, days);
+
+	            if (s != null)
+	                signals.add(s);
+	        }
+
+	        return signals;
+	}
 }

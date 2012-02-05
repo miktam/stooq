@@ -1,7 +1,6 @@
 package com.data.ta;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -107,22 +106,23 @@ public class SignalGenerator {
 
         Signal s = null;
 
-        final int VOLUME_INCREASE = 2;
+        final int VOLUME_INCREASE_FIVE = 5;
+        final int VOLUME_INCREASE_TEN = 10;
+        final int AVERAGE_DAYS = 45;
 
-        int multiply = 10;
         double oldVolume = 0;
         double currentVolume = 0;
 
-        List<EntryDayTicker> last = null;
+        List<EntryDayTicker> lastAverageDays = null;
 
         try {
-            last = ticker.getLast(days * multiply);
+            lastAverageDays = ticker.getLast(AVERAGE_DAYS);
         } catch (IndexOutOfBoundsException e) {
             logger.trace(e);
             return s;
         }
 
-        List<EntryDayTicker> entryDayTickersPrevious = last.subList(0, last.size() - days);
+        List<EntryDayTicker> entryDayTickersPrevious = lastAverageDays.subList(0, lastAverageDays.size() - days);
         List<EntryDayTicker> entryDayTickersNow = ticker.getLast(days);
 
         int oldDaysCounter = 0;
@@ -144,11 +144,20 @@ public class SignalGenerator {
 
         logger.trace("old volume average:" + Tool.df().format(avgOldVolume) + " volume now:" + avgCurrentVolume);
 
-        if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE) {
-            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME);
+        if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE_TEN) {
+            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME_10);
+            logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
+        } else if (avgCurrentVolume > avgOldVolume * VOLUME_INCREASE_FIVE) {
+            s = new Signal(ticker, ticker.getLast(1).get(0).date, SignalEnum.B_OR_S_VOLUME_5);
             logger.trace(ticker.ticker + ": current volume is bigger then previous one, times:" + Tool.df().format(avgCurrentVolume/avgOldVolume));
         }
 
+
         return s;  //To change body of created methods use File | Settings | File Templates.
     }
+
+	public static Signal checkAD(Ticker ticker, int days) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

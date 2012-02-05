@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.data.ta.Signal;
@@ -27,15 +28,32 @@ public class DataDownloaderTest {
 
 		List<Signal> totalSignals = new ArrayList<Signal>();
 
-		totalSignals.addAll(TickerManager.getSignalsOnVolume(tickers, 3));
-		totalSignals.addAll(TickerManager.getSignalsOnRsi(tickers, 4));
-		totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 2));
+		totalSignals.addAll(TickerManager.getSignalsOnVolume(tickers, 1));
+		totalSignals.addAll(TickerManager.getSignalsOnRsi(tickers, 3));
+		//totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 1));
 
 		totalSignals.removeAll(extractCompositeEntries(totalSignals));
 		
 		displaySignals(totalSignals);
 	}
 
+    @Test
+    public void checkSignalsSTS() throws Exception {
+        //List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
+        //displaySignals(interesting);
+        Ticker kgh = TickerManager.getTickerFor("KGHM");
+        kgh.taSTS();
+    }
+
+    @Ignore("not finished")
+    @Test
+	public void checkSignalsAD() throws Exception {
+		//List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
+		//displaySignals(interesting);
+		Ticker kgh = TickerManager.getTickerFor("KGHM");
+		kgh.taAD(10);
+	}
+	
 	@Test
 	public void checkSignalsVolumeIncreaseForAll() throws Exception {
 		List<Signal> interesting = TickerManager.getSignalsOnVolume(tickers, 3);
@@ -101,7 +119,7 @@ public class DataDownloaderTest {
 
 		// sort signals by tickers
 
-		int LIMIT = 250000;
+		int LIMIT = 500000;
 		logger.info("show sorted Signals (by volume) for volume (obroty) > " + LIMIT);		
 
 		Collections.sort(s, new ComapatorBasedOnTickerName());
@@ -112,7 +130,7 @@ public class DataDownloaderTest {
 			double obroty = (sig.ticker.getLast(1)).get(0).close * (sig.ticker.getLast(1)).get(0).vol;
 
 			if (obroty > LIMIT)
-				logger.warn(sig + ", obroty=" + Tool.df().format(obroty) + " " + getLastPrices(sig.ticker.getLast(5)));
+				logger.warn(sig + ", obroty=" + Tool.dfBig().format(obroty) + " " + getLastPrices(sig.ticker.getLast(5)));
 		}
 	}
 	
