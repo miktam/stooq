@@ -25,21 +25,20 @@ import com.data.ticker.Ticker;
 
 public class DataDownloaderImpl implements DataDownloader {
 
-	private final Logger logger = Logger.getLogger(DataDownloaderImpl.class);
+	private static final Logger logger = Logger.getLogger(DataDownloaderImpl.class);
 
 	private final String bossaDataInZip = "http://bossa.pl/pub/metastock/mstock/mstall.zip";
 
 	private final String dataDirectory = "C:\\DEV\\stooq\\data\\";
 	private final String filenameStoredLocally = dataDirectory + "stooq.zip";
-	private final String extractedFilesDirectory = dataDirectory
-			+ "EXTRACTED\\";
+	private final String extractedFilesDirectory = dataDirectory + "EXTRACTED\\";
 
 	private String contentType;
 	private int contentLength;
 	private long now;
 
 	// set to true if there is new file from internet
-	private boolean filesAreFreshUnzipThem = false;
+	private boolean filesAreFreshUnzipThem = false;	
 
 	@Override
 	public List<Ticker> downloadData() throws Exception {
@@ -72,13 +71,12 @@ public class DataDownloaderImpl implements DataDownloader {
 		return tickers;
 	}
 
-	private String writeUrlLocally(URLConnection urlConnection)
-			throws IOException, FileNotFoundException, UnknownHostException {
+	private String writeUrlLocally(URLConnection urlConnection) throws IOException, FileNotFoundException,
+			UnknownHostException {
 
 		long sizeOfStoredFile = new File(filenameStoredLocally).length();
 		if (sizeOfStoredFile == contentLength) {
-			logger.warn("USE CACHE! stored file size: " + sizeOfStoredFile
-					+ " is equals to urlContentLengh");
+			logger.warn("USE CACHE! stored file size: " + sizeOfStoredFile + " is equals to urlContentLengh");
 
 		} else {
 
@@ -99,8 +97,7 @@ public class DataDownloaderImpl implements DataDownloader {
 			now = f("read all bytes", now);
 
 			if (offset != contentLength) {
-				throw new IOException("Only read " + offset
-						+ " bytes; Expected " + contentLength + " bytes");
+				throw new IOException("Only read " + offset + " bytes; Expected " + contentLength + " bytes");
 			}
 
 			logger.trace("Just read bytes from network: " + offset);
@@ -140,15 +137,11 @@ public class DataDownloaderImpl implements DataDownloader {
 
 			int howManyEntriesInZip = zipfile.size();
 			logger.trace("files in zip: " + howManyEntriesInZip);
-			File directoryWhereFilesWillBeCreated = new File(
-					extractedFilesDirectory);
+			File directoryWhereFilesWillBeCreated = new File(extractedFilesDirectory);
 			int alreadyInDir = directoryWhereFilesWillBeCreated.list().length;
-			if (alreadyInDir == howManyEntriesInZip
-					&& filesAreFreshUnzipThem == false) {
-				logger.warn("CACHE unzipping!: already " + howManyEntriesInZip
-						+ " files in directory");
-				List<File> filesCached = Arrays
-						.asList(directoryWhereFilesWillBeCreated.listFiles());
+			if (alreadyInDir == howManyEntriesInZip && filesAreFreshUnzipThem == false) {
+				logger.warn("CACHE unzipping!: already " + howManyEntriesInZip + " files in directory");
+				List<File> filesCached = Arrays.asList(directoryWhereFilesWillBeCreated.listFiles());
 				for (File f : filesCached)
 					extractedFiles.add(f.getAbsolutePath());
 			} else {
@@ -161,8 +154,7 @@ public class DataDownloaderImpl implements DataDownloader {
 					String filePath = entry.getName();
 					logger.trace("extract file: " + filePath);
 					extractedFiles.add(extractedFilesDirectory + filePath);
-					FileOutputStream fos = new FileOutputStream(
-							extractedFilesDirectory + filePath);
+					FileOutputStream fos = new FileOutputStream(extractedFilesDirectory + filePath);
 					dest = new BufferedOutputStream(fos, BUFFER);
 					while ((count = is.read(data, 0, BUFFER)) != -1) {
 						dest.write(data, 0, count);
@@ -180,18 +172,32 @@ public class DataDownloaderImpl implements DataDownloader {
 
 	}
 
-	private URLConnection readFromUrl(String url) throws MalformedURLException,
-			IOException {
+	private URLConnection readFromUrl(String url) throws MalformedURLException, IOException {
 		logger.trace("get tickers from net");
+		
+		setProxyIfNeeded(url);
 
 		URL u = new URL(url);
 		URLConnection uc = u.openConnection();
 		contentType = uc.getContentType();
 		contentLength = uc.getContentLength();
-		logger.debug("content type: " + contentType + " and lenght: "
-				+ contentLength);
+		logger.debug("content type: " + contentType + " and lenght: " + contentLength);
 
 		return uc;
+	}
+	
+	private static void setProxyIfNeeded(String url) {
+		try {
+			URL u = new URL(url);
+			URLConnection uc = u.openConnection();
+			InputStream raw = uc.getInputStream();
+			
+			logger.info("no need to set proxy");
+		} catch (Exception e) {
+			logger.info("set proxy!");
+			System.setProperty("http.proxyHost", "wwwgate0.mot.com");
+			System.setProperty("http.proxyPort", "1080");
+		}
 	}
 
 }

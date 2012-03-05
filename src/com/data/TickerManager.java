@@ -68,8 +68,8 @@ public class TickerManager {
 
             try {
 
-                t.taSMA(SMA.SMA15);
-                t.taSMA(SMA.SMA30);
+                //t.taSMA(SMA.SMA15);
+                //t.taSMA(SMA.SMA30);
                 t.taSMA(SMA.SMA45);
                 t.taSMA(SMA.SMA200);
 

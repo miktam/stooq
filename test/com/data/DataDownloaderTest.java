@@ -30,7 +30,7 @@ public class DataDownloaderTest {
 
 		totalSignals.addAll(TickerManager.getSignalsOnVolume(tickers, 1));
 		totalSignals.addAll(TickerManager.getSignalsOnRsi(tickers, 3));
-		//totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 1));
+		totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 1));
 
 		totalSignals.removeAll(extractCompositeEntries(totalSignals));
 		
