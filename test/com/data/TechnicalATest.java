@@ -80,7 +80,7 @@ public class TechnicalATest {
 	@Before
 	public void setUp() {
 		BasicConfigurator.configure();
-		dd = new DataDownloaderImpl();
+		dd = new DataDownloader();
 		lib = new Core();
 		input = new double[200];
 		inputInt = new int[200];

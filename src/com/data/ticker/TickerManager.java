@@ -1,4 +1,4 @@
-package com.data;
+package com.data.ticker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,8 +10,6 @@ import org.apache.log4j.Logger;
 import com.data.ta.SMA;
 import com.data.ta.Signal;
 import com.data.ta.SignalGenerator;
-import com.data.ticker.EntryDayTicker;
-import com.data.ticker.Ticker;
 
 public class TickerManager {
 
@@ -19,9 +17,27 @@ public class TickerManager {
 
     private static final Logger logger = Logger.getLogger(TickerManager.class);
 
-    private List<Ticker> tickers = new ArrayList<Ticker>();
+    private static List<Ticker> tickers = new ArrayList<Ticker>();
     private static Map<String, Ticker> nameTickerMap = new HashMap<String, Ticker>();
+    
 
+    public static List<Ticker> parseFiles(List<String> absolutePaths)
+	{
+
+		// <TICKER>,<DTYYYYMMDD>,<OPEN>,<HIGH>,<LOW>,<CLOSE>,<VOL>,
+		//ACTION,20060724,13.90,13.90,11.60,11.80,1211035
+		for (String path:absolutePaths)
+		{
+			Ticker t = new Ticker(path);
+			tickers.add(t);
+		}
+		
+		logger.trace("created list of tickers #: " + tickers.size());	
+		
+		return tickers;
+	}
+    
+    
     public static Ticker getTickerFor(String name) {
         return nameTickerMap.get(name);
     }

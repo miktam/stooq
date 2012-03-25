@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.data.ta.Signal;
 import com.data.ticker.EntryDayTicker;
 import com.data.ticker.Ticker;
+import com.data.ticker.TickerManager;
 import com.tools.Tool;
 
 public class DataDownloaderTest {
@@ -33,42 +34,41 @@ public class DataDownloaderTest {
 		totalSignals.addAll(TickerManager.getSignalsOnSMA(tickers, 1));
 
 		totalSignals.removeAll(extractCompositeEntries(totalSignals));
-		
+
 		displaySignals(totalSignals);
 	}
 
-    @Test
-    public void testDoublePrinting()
-    {
-        double price = 15.3498;
-        double bigVolume = 313131313.1232;
-        
-        String pricePrinted = Tool.p(bigVolume);
-        logger.info(bigVolume + " nicer " + pricePrinted);
+	@Test
+	public void testDoublePrinting() {
+		double price = 15.3498;
+		double bigVolume = 313131313.1232;
 
-        logger.info(price + " nicer " + Tool.p(price));
+		String pricePrinted = Tool.p(bigVolume);
+		logger.info(bigVolume + " nicer " + pricePrinted);
 
-        logger.info(1000000 + " nicer " + Tool.p(1000000.23));
-        logger.info(100000 + " nicer " + Tool.p(100000.23));
-    }
+		logger.info(price + " nicer " + Tool.p(price));
 
-    @Test
-    public void checkSignalsSTS() throws Exception {
-        //List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
-        //displaySignals(interesting);
-        Ticker kgh = TickerManager.getTickerFor("KGHM");
-        kgh.taSTS();
-    }
+		logger.info(1000000 + " nicer " + Tool.p(1000000.23));
+		logger.info(100000 + " nicer " + Tool.p(100000.23));
+	}
 
-    @Ignore("not finished")
-    @Test
+	@Test
+	public void checkSignalsSTS() throws Exception {
+		// List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
+		// displaySignals(interesting);
+		Ticker kgh = TickerManager.getTickerFor("KGHM");
+		kgh.taSTS();
+	}
+
+	@Ignore("not finished")
+	@Test
 	public void checkSignalsAD() throws Exception {
-		//List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
-		//displaySignals(interesting);
+		// List<Signal> interesting = TickerManager.getSignalsOnAD(tickers, 3);
+		// displaySignals(interesting);
 		Ticker kgh = TickerManager.getTickerFor("KGHM");
 		kgh.taAD(10);
 	}
-	
+
 	@Test
 	public void checkSignalsVolumeIncreaseForAll() throws Exception {
 		List<Signal> interesting = TickerManager.getSignalsOnVolume(tickers, 3);
@@ -148,16 +148,14 @@ public class DataDownloaderTest {
 				logger.warn(sig + ", obroty=" + Tool.p(obroty) + "\t" + getLastPrices(sig.ticker.getLast(5)));
 		}
 	}
-	
-	private static String getLastPrices(List<EntryDayTicker> entries)	
-	{
+
+	private static String getLastPrices(List<EntryDayTicker> entries) {
 		StringBuilder res = new StringBuilder();
-		for (EntryDayTicker e:entries)
-		{
+		for (EntryDayTicker e : entries) {
 			res.append(e.close + ", ");
 		}
-		
-		return res.toString().substring(0, res.length() -2);
+
+		return res.toString().substring(0, res.length() - 2);
 	}
 
 	static class ComapatorBasedOnVolume implements Comparator<Signal> {
@@ -175,11 +173,11 @@ public class DataDownloaderTest {
 			return o1.ticker.ticker.compareTo(o2.ticker.ticker);
 		}
 	}
-	
+
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-        
-        Thread.sleep(5000);
+
+		Thread.sleep(5000);
 		wig30tickersList = new ArrayList<String>() {
 			{
 				add("ASSECOPOL");
@@ -214,8 +212,8 @@ public class DataDownloaderTest {
 			}
 		};
 
-		dd = new DataDownloaderImpl();
-		tickers = dd.downloadData();
+		dd = new DataDownloader();
+		tickers = TickerManager.parseFiles(dd.downloadData());
 	}
 
 }
