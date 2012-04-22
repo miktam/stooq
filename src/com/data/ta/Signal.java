@@ -20,5 +20,26 @@ public class Signal {
 	@Override
 	public String toString() {
 		return "Signal [ticker=" + ticker + ", date=" + date.toString(Tool.dm()) + ", type=" + type + "]";
-	}	
+	}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Signal signal = (Signal) o;
+
+        if (date != null ? !date.equals(signal.date) : signal.date != null) return false;
+        if (ticker != null ? !ticker.equals(signal.ticker) : signal.ticker != null) return false;
+        return type == signal.type;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ticker != null ? ticker.hashCode() : 0;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 }

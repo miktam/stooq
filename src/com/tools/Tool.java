@@ -1,7 +1,10 @@
 package com.tools;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.data.ticker.EntryDayTicker;
 import org.apache.log4j.Logger;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -10,10 +13,24 @@ public class Tool {
 
     private static Logger logger = Logger.getLogger(Tool.class);
 
+
+    /**
+     * extract close prices
+     */
+    public static List<Double> ePriceClose(List<EntryDayTicker> edt)
+    {
+        List<Double> result = new ArrayList<Double>();
+        
+        for (EntryDayTicker e: edt)
+        {
+            result.add(e.close);
+        }
+
+        return result;
+    }
+
     /**
      * print array of doubles
-     *
-     * @param arr
      */
     public static void pa(double[] arr) {
         logger.info("print array with size: " + arr.length);
@@ -50,11 +67,9 @@ public class Tool {
 
     /**
      * print doubles nicely
-     *
-     * @return
      */
     public static String p(double d) {
-        String result = null;
+        String result;
 
         if (d < 1000) {
             result = Tool.p(d);
